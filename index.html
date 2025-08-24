@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Fiddelke - Graphic Designer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+        .nav-menu a::after {
+            background: linear-gradient(90deg, #e76f38, #e76f38);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            padding: 0 3rem;
+            position: relative;
+            margin-top: 80px;
+            background: #f8f9fb;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 0rem; /* reduced gap */
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 65%;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .greeting {
+            color: #252525;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        .hero-name {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeInRight 1s ease-out 0.6s forwards;
+        }
+
+        .hero-image img {
+            width: 435px;
+            height: 435px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+            border-color: #e76f38;
+        }
+
+        /* Skills Ticker - seamless infinite scroll */
+        .ticker-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background: #e76f38;
+            margin: 4rem 0;
+            height: 100px;
+            position: relative;
+            transform: rotate(-3deg); /* <-- move tilt here */
+        }
+        .ticker-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                #c76132 0%,
+                transparent 10%,
+                transparent 90%,
+                #c76132 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker-scroll 30s linear infinite;
+            will-change: transform;
+            /* REMOVE: transform: rotate(-3deg); */
+        }
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .skill-text {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #f8f9fb, #e9e9eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #222;
+            margin-right: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+
+        /* About Section */
+        .about {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff00;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem; /* reduced gap */
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #e76f38;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-description {
+            color: #444;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            color: #e76f38;
+        }
+
+        .social-link:hover {
+            background: #e76f38;
+            color: #fff;
+        }
+
+        .about-image {
+            text-align: right;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            aspect-ratio: 1.5/1;
+        }
+
+        /* Education & Experience */
+        .credentials {
+            padding: 6rem 3rem;
+            background: #f8f9fb;
+        }
+
+        .credentials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .credential-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #e76f38;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .credential-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.04);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .credential-item:hover {
+            background: #f8f9fb;
+            border-color: #e76f38;
+            transform: translateY(-3px);
+        }
+
+        .credential-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* vertically center */
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #222;
+        }
+
+        .credential-date {
+            color: #e76f38;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: right;
+            align-self: center;
+            min-width: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .credential-subtitle {
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff00;
+        }
+
+        .skills-title {
+            color: #e76f38;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        .skill-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 50% image, 50% text */
+            align-items: stretch;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.04);
+            padding: 0;
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 260px;
+        }
+        .skill-card-image {
+            background: #fff7f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 260px;
+            padding: 0;
+        }
+        .skill-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: none;
+            background: none;
+            min-height: 260px;
+        }
+        .skill-card-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            background: none;
+        }
+        .skill-card h4 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: #e76f38;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+        }
+        .skill-card p {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.08rem;
+            font-weight: 500;
+        }
+        .skill-button {
+            align-self: flex-start;
+            background: linear-gradient(135deg, #222222, #222222);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            position: relative;
+            overflow: hidden;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            letter-spacing: .2em;
+        }
+        .skill-button:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+        @media (max-width: 900px) {
+            .skill-card {
+                grid-template-columns: 1fr;
+            }
+            .skill-card-image {
+                min-height: 180px;
+            }
+            .skill-card-content {
+                padding: 1.5rem;
+            }
+        }
+
+
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 3rem;
+            text-align: center;
+            background: #f8f9fb;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: -.5rem;
+            color: #222;
+        }
+
+        .cta-subtitle {
+            color: #e76f38;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-final {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: white;
+            padding: 1.5rem 4rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 700;
+        }
+
+        .cta-final:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .about-image {
+                justify-content: center;
+            }
+            .about-image img {
+                width: 100%;
+                max-width: 600px;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 0rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 1.5rem;
+            }
+
+            .hero-name {
+                font-size: 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about, .credentials, .skills-section, .portfolio, .cta-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="logo">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">UI/UX</a></li>
+                <li><a href="#about">Graphic Design</a></li>
+                <li><a href="#work">Illustrations</a></li>
+                <li><a href="#contact">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="greeting">👋 Hello, my name is Aaron</p>
+                <h2 class="hero-title">Graphic<br>Designer,<br>UI/UX, and<br>Illustrator</h2>
+            </div>
+            <div class="hero-image">
+                <img src="/images/port.jpg" alt="Aaron Fiddelke">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Ticker -->
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span class="skill-text">DIGITAL</span>
+            <span class="skill-text">SKETCH</span>
+            <span class="skill-text">ANIMATION</span>
+            <span class="skill-text">FIGMA</span>
+            <span class="skill-text">ILLUSTRATOR</span>
+            <span class="skill-text">DESIGNER</span>
+            <span class="skill-text">UI/UX</span>
+            <span class="skill-text">EXPERIENCES</span>
+            <!-- Duplicate for seamless scroll -->
+            <span class="skill-text">DIGITAL</span>
+            <span class="skill-text">SKETCH</span>
+            <span class="skill-text">ANIMATION</span>
+            <span class="skill-text">FIGMA</span>
+            <span class="skill-text">ILLUSTRATOR</span>
+            <span class="skill-text">DESIGNER</span>
+            <span class="skill-text">UI/UX</span>
+            <span class="skill-text">EXPERIENCES</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about scroll-reveal">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="/images/work.jpg" alt="Workspace">
+            </div>
+            <div class="about-text">
+                <h2>About Aaron</h2>
+                <p class="about-description">
+                    I love blending creativity with functionality to make designs that are both beautiful and easy to use. I'm always eager to learn new things, whether that's exploring fresh design trends or picking up a new skill.
+                </p>
+                <p class="about-description">
+                    When I'm not designing, you can find me outdoors by hiking, illustrating, or helping others, whether through mentoring or collaborative projects. For me, it's all about creating, learning, and making a positive impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials scroll-reveal">
+        <div class="credentials-container">
+            <div class="credential-section">
+                <h3>🎓 Education</h3>
+                <div class="credential-item">
+                    <div class="credential-header">
+                        <div class="credential-title">University of Central Missouri</div>
+                        <div class="credential-date">2010 - 2014</div>
+                    </div>
+                    <div class="credential-subtitle">BFA - Graphic Design</div>
+                </div>
+                <div class="credential-item">
+                    <div class="credential-header">
+                        <div class="credential-title">Coursera</div>
+                        <div class="credential-date">2024</div>
+                    </div>
+                    <div class="credential-subtitle">Google UX/UI Design Certificate</div>
+                </div>
+            </div>
+            <div class="credential-section">
+                <h3>💼 Professional Experience</h3>
+                <div class="credential-item">
+                    <div class="credential-header">
+                        <div class="credential-title">Commerce Bank</div>
+                        <div class="credential-date">2019 - Present</div>
+                    </div>
+                    <div class="credential-subtitle">Senior Graphic Designer</div>
+                </div>
+                <div class="credential-item">
+                    <div class="credential-header">
+                        <div class="credential-title">Burns & McDonnell</div>
+                        <div class="credential-date">2014 - 2019</div>
+                    </div>
+                    <div class="credential-subtitle">Master's Human-Computer Interaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section scroll-reveal">
+        <h2 class="skills-title">My skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-image">
+                    <img src="/images/hi-fi.jpg" alt="UI/UX Design">
+                </div>
+                <div class="skill-card-content">
+                    <h4>UI/UX Designs</h4>
+                    <p>A deep dive into the world of digital experiences, where user stories translate into flows and wireframes. Every project explores user-centric solutions crafted to not only look visually appealing but serve people around the world.</p>
+                    <button class="skill-button">View Case Studies</button>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-image">
+                    <img src="/images/OO_Brand+Identity4.jpg" alt="Graphic Design">
+                </div>
+                <div class="skill-card-content">
+                    <h4>Graphic Designs</h4>
+                    <p>A curated collection of visual identities that range from playful and creative projects in collateral design, branding, print design, and developing out branding systems that tell stories, build trust, and bring ideas to life through thoughtful, creative.</p>
+                    <button class="skill-button">View Designs</button>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-image">
+                    <img src="/images/Space-Fishingv3.jpg" alt="Illustration">
+                </div>
+                <div class="skill-card-content">
+                    <h4>Illustrations</h4>
+                    <p>A showcase of artistic storytelling where each illustration captures imagination and emotion. In this collection, creativity, color, and line work shown to bring art of life personal projects. They bring energy to motion ideas.</p>
+                    <button class="skill-button">View Illustrations</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section scroll-reveal">
+        <h2 class="cta-title">Lets build your</h2>
+        <h3 class="cta-subtitle">project together</h3>
+        <button class="cta-final">Get in touch</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 by Aaron Fiddelke</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
