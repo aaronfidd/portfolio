@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Brewing - Aaron Fiddelke</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #f8f9fb; color: #222; line-height: 1.6; overflow-x: hidden; }
+        .header { position: fixed; top: 0; width: 100%; background: #fff; border-bottom: 1px solid #e5e7eb; color: #222; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { color: #222; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; padding: 0.5rem 1rem; border-radius: 8px; }
+        .nav-menu a:hover { color: #e76f38; background: rgba(255, 130, 71, 0.08); }
+        .main-content { max-width: 1100px; margin: 0 auto; padding: 7rem 1.5rem 2rem 1.5rem; }
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #e76f38; }
+        h2 { font-size: 1.3rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; color: #222; }
+        .section { margin-bottom: 2.5rem; }
+        .hero-imgs { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0 2.5rem 0; }
+        .hero-imgs img { width: 320px; max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .projects img { width: 100%; max-width: 700px; display: block; margin: 0 auto 1.5rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .takeaways { background: #fff7f2; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 2px 8px rgba(255,130,71,0.06); }
+        .takeaways ul { margin: 1rem 0 0 1.5rem; color: #444; }
+        @media (max-width: 700px) { .main-content { padding: 1.5rem 0.5rem; } .hero-imgs { flex-direction: column; gap: 1rem; } }
+        .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+        .cta-nav-btn {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            letter-spacing: .1em;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            display: inline-block;
+        }
+        .cta-nav-btn:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="hover-underline">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="uiux.html">UI/UX</a></li>
+                <li><a href="graphic-design.html" class="nav-current">Graphic Design</a></li>
+                <li><a href="illustration.html">Illustrations</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h1>Border Brewing</h1>
+        <div class="section">
+            <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">Branding & Packaging Design</div>
+            <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Lead Designer</div>
+            <div style="font-size:1rem;color:#888;">Tools: Illustrator, Photoshop, InDesign</div>
+        </div>
+        <div class="hero-imgs">
+            <img src="images/border-hero-1.jpg" alt="Border Brewing branding mockup">
+            <img src="images/border-hero-2.jpg" alt="Border Brewing packaging design">
+            <img src="images/border-hero-3.jpg" alt="Border Brewing merchandise">
+        </div>
+        <div class="overview section">
+            <h2>Overview</h2>
+            <p>Border Brewing is a craft brewery located in Kansas City. The creative challenge was to build a brand identity that captured the brewery’s personality while producing eye-catching packaging and merchandise designs to help the brewery stand out in a crowded market.</p>
+        </div>
+        <div class="projects section">
+            <h2>Brand Identity</h2>
+            <img src="images/border-brand.jpg" alt="Border Brewing brand identity">
+            <h2>Packaging Design</h2>
+            <img src="images/border-packaging.jpg" alt="Border Brewing packaging">
+        </div>
+        <div class="takeaways">
+            <h2>Takeaways</h2>
+            <ul>
+                <li>Established a recognizable brand system for a growing brewery.</li>
+                <li>Created packaging designs that increased shelf visibility and appeal.</li>
+                <li>Successfully translated brand personality into merchandise and print collateral.</li>
+            </ul>
+        </div>
+        <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
+            <a href="commerce-bank.html" class="cta-nav-btn">Previous Project</a>
+            <a href="orbit-outfitters.html" class="cta-nav-btn">Next Project</a>
+        </div>
+    </main>
+    <footer class="footer"><p>&copy; 2025 by Aaron Fiddelke</p></footer>
+    <script>
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+</body>
+</html>
