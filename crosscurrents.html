@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrossCurrents Fly Shop - Aaron Fiddelke</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            color: #222;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: #222;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        .nav-menu a:hover {
+            color: #e76f38;
+            background: rgba(255, 130, 71, 0.08);
+        }
+        .nav-menu a::after {
+            background: linear-gradient(90deg, #e76f38, #e76f38);
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 2rem 1.5rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #e76f38;
+        }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .hero-imgs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+        .hero-imgs img {
+            width: 320px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .overview, .user-table, .persona-img, .info-arch-img, .site-map-img {
+            margin-bottom: 2rem;
+        }
+        .user-table img, .persona-img img, .info-arch-img img, .site-map-img img {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .cta-btns {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2.5rem 0 2rem 0;
+        }
+        .cta-btn {
+            padding: 0.7rem 2.2rem;
+            border: 1px solid #bbb;
+            border-radius: 30px;
+            background: #fff;
+            color: #222;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cta-btn:hover {
+            background: #e76f38;
+            color: #fff;
+            border-color: #e76f38;
+        }
+        .takeaways {
+            background: #fff7f2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.06);
+        }
+        .takeaways h2 {
+            margin-top: 0;
+        }
+        .takeaways ul {
+            margin: 1rem 0 0 1.5rem;
+            color: #444;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        @media (max-width: 700px) {
+            .main-content {
+                padding: 1.5rem 0.5rem;
+            }
+            .hero-imgs {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+                .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+        .cta-nav-btn {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            letter-spacing: .1em;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            display: inline-block;
+        }
+        .cta-nav-btn:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="hover-underline">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="uiux.html" class="nav-current">UI/UX</a></li>
+                <li><a href="graphic-design.html">Graphic Design</a></li>
+                <li><a href="illustration.html">Illustrations</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h1>CrossCurrents Fly Shop</h1>
+        <div class="section">
+            <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">UI/UX Case Study &amp; Redesign</div>
+            <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Lead Designer, Researcher</div>
+            <div style="font-size:1rem;color:#888;">Tools: Figma, Adobe XD, Illustrator</div>
+        </div>
+        <div class="hero-imgs">
+            <img src="images/cc-hero-1.jpg" alt="CrossCurrents Fly Shop Mockups">
+            <img src="images/cc-hero-2.jpg" alt="CrossCurrents Fly Shop Mockups">
+            <img src="images/cc-hero-3.jpg" alt="CrossCurrents Fly Shop Mockups">
+        </div>
+        <div class="overview section">
+            <h2>Overview</h2>
+            <p>CrossCurrents Fly Shop is a Montana-based retailer specializing in fly fishing gear, guided trips, and education. The redesign focused on improving the online experience for new and returning customers, making it easier to find products, book trips, and access resources.</p>
+        </div>
+        <div class="section">
+            <h2>Understanding the User</h2>
+            <div class="user-table">
+                <img src="images/cc-user-table.jpg" alt="User Research Table">
+            </div>
+            <div class="persona-img">
+                <img src="images/cc-persona.jpg" alt="User Persona">
+            </div>
+        </div>
+        <div class="section">
+            <h2>Information Architecture</h2>
+            <div class="info-arch-img">
+                <img src="images/cc-info-arch.jpg" alt="Information Architecture Diagram">
+            </div>
+        </div>
+        <div class="section">
+            <h2>Site Map</h2>
+            <div class="site-map-img">
+                <img src="images/cc-site-map.jpg" alt="Site Map Diagram">
+            </div>
+        </div>
+        <div class="section">
+            <h2>Wireframes</h2>
+            <p>Initial wireframes were created to plan the structure of the site and key user journeys, focusing on product navigation and trip booking. The wireframes set the foundation for a streamlined experience and clear information hierarchy.</p>
+        </div>
+        <div class="section">
+            <h2>Usability Test</h2>
+            <p>Usability testing was conducted with real users to validate workflows, identify issues, and gather feedback on navigation and content. The results guided further improvements to the design.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem;">
+                <div style="flex:1;min-width:220px;">
+                    <h3>User Interview Takeaways</h3>
+                    <ul>
+                        <li>Users wanted more intuitive navigation to quickly find products and book trips.</li>
+                        <li>Information about guides and trip options needed to be more accessible.</li>
+                    </ul>
+                </div>
+                <div style="flex:1;min-width:220px;">
+                    <h3>Direct System Observations</h3>
+                    <ul>
+                        <li>Navigation and search were the most used features and must be prominent.</li>
+                        <li>Users responded well to clear calls-to-action and visual hierarchy.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Wireframe - Digital</h2>
+            <p>Digital wireframes refined layout, visual hierarchy, and content. These helped align team and client vision prior to final mockups and asset delivery.</p>
+        </div>
+        <div class="section">
+            <h2>High Fidelity</h2>
+            <p>High-fidelity mockups showcased the final design, ready for development and launch.</p>
+        </div>
+        <div class="cta-btns">
+            <a href="#" class="cta-btn">View Wireframes</a>
+            <a href="#" class="cta-btn">View Prototype</a>
+        </div>
+        <div class="takeaways">
+            <h2>Takeaways</h2>
+            <ul>
+                <li>Redesign improved navigation and user experience for both new and returning customers.</li>
+                <li>Information architecture and user research were key to successful outcomes.</li>
+                <li>Usability testing and feedback guided final refinements and launch.</li>
+            </ul>
+        </div>
+        <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
+            <a href="custom_clack.html" class="cta-nav-btn">Previous Project</a>
+            <a href="creditmate.html" class="cta-nav-btn">Next Project</a>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 by Aaron Fiddelke</p>
+    </footer>
+    <script>
+        // Smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll reveal animation
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+                    // Following cursor dot effect
+            if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+                new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+            } else {
+                // Fallback: simple dot
+                const dot = document.createElement('div');
+                dot.style.position = 'fixed';
+                dot.style.width = '13px';
+                dot.style.height = '13px';
+                dot.style.borderRadius = '50%';
+                dot.style.background = '#323232a6';
+                dot.style.pointerEvents = 'none';
+                dot.style.zIndex = '9999';
+                dot.style.transform = 'translate(-50%, -50%)';
+                document.body.appendChild(dot);
+                document.addEventListener('mousemove', function(e) {
+                    dot.style.left = e.clientX + 'px';
+                    dot.style.top = e.clientY + 'px';
+                });
+            }
+    </script>
+</body>
+</html>

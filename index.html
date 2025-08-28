@@ -4,7 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aaron Fiddelke - Graphic Designer Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: bgMove 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgMove {
+            0% {
+                background-position: 20% 80%, 80% 20%, 40% 40%;
+            }
+            50% {
+                background-position: 30% 70%, 70% 30%, 50% 50%;
+            }
+            100% {
+                background-position: 15% 85%, 85% 15%, 35% 45%;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            color: #222;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #222;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover {
+            color: #e76f38;
+            background: rgba(255, 130, 71, 0.08);
+        }
         .nav-menu a::after {
             background: linear-gradient(90deg, #e76f38, #e76f38);
         }
@@ -550,20 +646,20 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <a href="/" style="text-decoration:none;">
-            <div class="logo">Aaron Fiddelke</div>
-        </a>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#home">UI/UX</a></li>
-                <li><a href="#about">Graphic Design</a></li>
-                <li><a href="#work">Illustrations</a></li>
-                <li><a href="#contact">Dribbble</a></li>
-                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
-            </ul>
-        </nav>
-    </header>
+        <header class="header">
+                <a href="/" style="text-decoration:none;">
+                            <div class="hover-underline">Aaron Fiddelke</div>
+                                    </a>
+                                            <nav>
+                                                        <ul class="nav-menu">
+                                                                        <li><a href="uiux.html">UI/UX</a></li>
+                                                                                        <li><a href="graphic-design.html">Graphic Design</a></li>
+                                                                                                        <li><a href="illustration.html">Illustrations</a></li>
+                                                                                                                        <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
+                                                                                                                                        <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+                                                                                                                                                    </ul>
+                                                                                                                                                            </nav>
+                                                                                                                                                                </header>-->
 
     <!-- Hero Section -->
     <section class="hero">
@@ -573,7 +669,7 @@
                 <h2 class="hero-title">Graphic<br>Designer,<br>UI/UX, and<br>Illustrator</h2>
             </div>
             <div class="hero-image">
-                <img src="/images/port.jpg" alt="Aaron Fiddelke">
+                <img src="images/port.jpg" alt="Aaron Fiddelke">
             </div>
         </div>
     </section>
@@ -605,10 +701,10 @@
     <section class="about scroll-reveal">
         <div class="about-content">
             <div class="about-image">
-                <img src="/images/work.jpg" alt="Workspace">
+                <img src="images/work.jpg" alt="Workspace">
             </div>
             <div class="about-text">
-                <h2>About Aaron</h2>
+                <h2>About Myself</h2>
                 <p class="about-description">
                     I love blending creativity with functionality to make designs that are both beautiful and easy to use. I'm always eager to learn new things, whether that's exploring fresh design trends or picking up a new skill.
                 </p>
@@ -665,7 +761,7 @@
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-card-image">
-                    <img src="/images/hi-fi.jpg" alt="UI/UX Design">
+                    <img src="images/hi-fi.jpg" alt="UI/UX Design">
                 </div>
                 <div class="skill-card-content">
                     <h4>UI/UX Designs</h4>
@@ -675,7 +771,7 @@
             </div>
             <div class="skill-card">
                 <div class="skill-card-image">
-                    <img src="/images/OO_Brand+Identity4.jpg" alt="Graphic Design">
+                    <img src="images/OO_Brand+Identity4.jpg" alt="Graphic Design">
                 </div>
                 <div class="skill-card-content">
                     <h4>Graphic Designs</h4>
@@ -685,7 +781,7 @@
             </div>
             <div class="skill-card">
                 <div class="skill-card-image">
-                    <img src="/images/Space-Fishingv3.jpg" alt="Illustration">
+                    <img src="images/Space-Fishingv3.jpg" alt="Illustration">
                 </div>
                 <div class="skill-card-content">
                     <h4>Illustrations</h4>
@@ -710,6 +806,87 @@
         <p>&copy; 2025 by Aaron Fiddelke</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll reveal animation
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll reveal elements
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scroll for internal navigation links only
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        // Add smooth scrolling functionality here
+                    }
+                    // External links will work normally
+                });
+            });
+
+            // Button interactions
+            document.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.classList.contains('skill-button')) {
+                        e.preventDefault();
+                        alert('Portfolio section would open here!');
+                    }
+                    if (this.classList.contains('cta-final')) {
+                        e.preventDefault();
+                        alert('Contact form would open here!');
+                    }
+                });
+
+            });
+
+            // Skill text hover effects
+            document.querySelectorAll('.skill-text').forEach(text => {
+                text.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                text.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Following cursor dot effect
+            if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+                new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+            } else {
+                // Fallback: simple dot
+                const dot = document.createElement('div');
+                dot.style.position = 'fixed';
+                dot.style.width = '13px';
+                dot.style.height = '13px';
+                dot.style.borderRadius = '50%';
+                dot.style.background = '#323232a6';
+                dot.style.pointerEvents = 'none';
+                dot.style.zIndex = '9999';
+                dot.style.transform = 'translate(-50%, -50%)';
+                document.body.appendChild(dot);
+                document.addEventListener('mousemove', function(e) {
+                    dot.style.left = e.clientX + 'px';
+                    dot.style.top = e.clientY + 'px';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

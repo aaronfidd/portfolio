@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectName - Aaron Fiddelke</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            color: #222;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: #222;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        .nav-menu a:hover {
+            color: #e76f38;
+            background: rgba(255, 130, 71, 0.08);
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 2rem 1.5rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .project-meta {
+            margin-bottom: 1.2rem;
+        }
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1.2rem;
+        }
+        .meta-info {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        .hero-imgs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+        .hero-imgs img {
+            width: 320px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .overview {
+            margin-bottom: 2rem;
+        }
+        .problem-solution-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .problem-solution-section > div {
+            flex: 1;
+            min-width: 220px;
+        }
+        .audience-section {
+            margin-top: 1.5rem;
+        }
+        .audience-item {
+            margin-bottom: 1.5rem;
+        }
+        .audience-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 0.8rem;
+        }
+        .feature-overview {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 0.8rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            color: #555;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "•";
+            color: #e76f38;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .user-journey-section {
+            margin-top: 1.5rem;
+        }
+        .journey-step {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #e76f38;
+            padding-left: 1.5rem;
+        }
+        .journey-step-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+        .usability-findings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .usability-findings > div {
+            flex: 1;
+            min-width: 220px;
+        }
+        .findings-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #222;
+        }
+        .findings-list {
+            list-style: none;
+            padding: 0;
+        }
+        .findings-list li {
+            color: #555;
+            margin-bottom: 0.6rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .findings-list li:before {
+            content: "•";
+            color: #e76f38;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .image-section {
+            margin: 2rem 0;
+        }
+        .image-section img {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .cta-btns {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2.5rem 0 2rem 0;
+        }
+        .cta-btn {
+            padding: 0.7rem 2.2rem;
+            border: 1px solid #bbb;
+            border-radius: 30px;
+            background: #fff;
+            color: #222;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cta-btn:hover {
+            background: #e76f38;
+            color: #fff;
+            border-color: #e76f38;
+        }
+        .takeaways {
+            background: #fff7f2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.06);
+        }
+        .takeaways h2 {
+            margin-top: 0;
+        }
+        .takeaways ul {
+            margin: 1rem 0 0 1.5rem;
+            color: #444;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+            .main-content {
+                padding: 6rem 1rem 2rem 1rem;
+            }
+            .hero-imgs {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-menu {
+                gap: 1rem;
+            }
+            .nav-menu a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+                .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+        .cta-nav-btn {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            letter-spacing: .1em;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            display: inline-block;
+        }
+        .cta-nav-btn:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="hover-underline">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="uiux.html" class="nav-current">UI/UX</a></li>
+                <li><a href="graphic-design.html">Graphic Design</a></li>
+                <li><a href="illustration.html">Illustrations</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>ProjectName App</h1>
+        <div class="section">
+            <div class="project-subtitle">UI/UX Case Study &amp; Design Project</div>
+            <div class="meta-info">Role: UX Researcher, UX/UI Designer</div>
+            <div class="meta-info">Tools: Figma, Adobe CC, FigJam, Pen and paper</div>
+        </div>
+
+        <!-- Hero Images Section -->
+        <div class="hero-imgs">
+            <img src="images/project-hero-1.jpg" alt="ProjectName Mockup 1">
+            <img src="images/project-hero-2.jpg" alt="ProjectName Mockup 2">
+            <img src="images/project-hero-3.jpg" alt="ProjectName Mockup 3">
+        </div>
+
+        <!-- Overview Section -->
+        <div class="overview section">
+            <h2>Overview</h2>
+            <p>Brief description of your project. Explain the main objective, context, and what you aimed to create. This should give readers a clear understanding of the project's purpose and scope.</p>
+            
+            <div class="problem-solution-section">
+                <div>
+                    <h3>The Problem</h3>
+                    <p>Describe the main problem or pain point that users are experiencing. What challenges does this project address? What gaps exist in the current market or user experience?</p>
+                </div>
+                <div>
+                    <h3>Solution</h3>
+                    <p>Explain how your project solves the identified problem. What value does it provide to users? How does your approach differ from existing solutions?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Audience Section -->
+        <div class="section">
+            <h2>Understanding the User</h2>
+            
+            <!-- Add user research table image here -->
+            <div class="image-section">
+                <img src="images/user-research-table.jpg" alt="User Research Table">
+            </div>
+            
+            <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Primary Audience</div>
+                    <p>Describe the main target users for this project. Include demographics, behaviors, needs, and pain points. What motivates them and what are their goals?</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Secondary Audience</div>
+                    <p>Identify any secondary user groups that might benefit from this project. How do their needs differ from the primary audience?</p>
+                </div>
+            </div>
+
+            <!-- Add persona image here -->
+            <div class="image-section">
+                <img src="images/user-persona.jpg" alt="User Persona">
+            </div>
+        </div>
+
+        <!-- Information Architecture Section -->
+        <div class="section">
+            <h2>Information Architecture</h2>
+            <div class="image-section">
+                <img src="images/information-architecture.jpg" alt="Information Architecture Diagram">
+            </div>
+        </div>
+
+        <!-- Key Features Section -->
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-title">Feature One</div>
+                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <ul class="feature-list">
+                        <li>Key functionality or benefit</li>
+                        <li>Another important aspect</li>
+                        <li>How it helps users achieve their goals</li>
+                        <li>Integration with other features</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Feature Two</div>
+                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <ul class="feature-list">
+                        <li>Key functionality or benefit</li>
+                        <li>User interaction details</li>
+                        <li>Problem it solves</li>
+                        <li>Value proposition</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Feature Three</div>
+                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <ul class="feature-list">
+                        <li>Key functionality or benefit</li>
+                        <li>Technical considerations</li>
+                        <li>User experience enhancement</li>
+                        <li>Accessibility features</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Feature Four</div>
+                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <ul class="feature-list">
+                        <li>Key functionality or benefit</li>
+                        <li>Personalization aspects</li>
+                        <li>Data insights provided</li>
+                        <li>Long-term user value</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Journey Section -->
+        <div class="section">
+            <h2>User Journey</h2>
+            <p>Overview of the user flow and key touchpoints throughout the experience.</p>
+            
+            <div class="user-journey-section">
+                <div class="journey-step">
+                    <div class="journey-step-title">Onboarding:</div>
+                    <p>Describe the initial user experience when they first encounter your product. What steps do they take to get started? How do you introduce key features?</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="journey-step-title">Main Dashboard:</div>
+                    <p>Explain what users see and can do on the main interface. What's the primary focus and what actions are available? How does the interface adapt to user needs?</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="journey-step-title">Feature Access:</div>
+                    <p>Detail how users navigate to and interact with the main features of your product. What's the flow between different sections?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wireframes Section -->
+        <div class="section">
+            <h2>Wireframes</h2>
+            <p>Initial wireframes were created to plan the structure and key user journeys. The wireframes set the foundation for a streamlined experience and clear information hierarchy.</p>
+        </div>
+
+        <!-- Usability Test Section -->
+        <div class="section">
+            <h2>Usability Test</h2>
+            <p>Usability testing was conducted with real users to validate workflows, identify issues, and gather feedback on navigation and functionality. The results guided further improvements to the design.</p>
+            
+            <div class="usability-findings">
+                <div>
+                    <div class="findings-title">User Interview Takeaways</div>
+                    <ul class="findings-list">
+                        <li>What users liked about the design</li>
+                        <li>Features that worked well</li>
+                        <li>Areas where users excelled</li>
+                        <li>Positive feedback on usability</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="findings-title">Direct System Observations</div>
+                    <ul class="findings-list">
+                        <li>Areas of confusion for users</li>
+                        <li>Features that need improvement</li>
+                        <li>Navigation challenges identified</li>
+                        <li>Suggestions for enhancement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Wireframes Section -->
+        <div class="section">
+            <h2>Wireframe - Digital</h2>
+            <p>Digital wireframes refined layout, visual hierarchy, and content. These helped align team and stakeholder vision prior to final mockups and development.</p>
+        </div>
+
+        <!-- High Fidelity Section -->
+        <div class="section">
+            <h2>High Fidelity</h2>
+            <p>High-fidelity mockups showcased the final design, ready for development and implementation. These designs incorporated all feedback and testing insights.</p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-btns">
+            <a href="#" class="cta-btn">View Wireframes</a>
+            <a href="#" class="cta-btn">View Prototype</a>
+        </div>
+
+        <!-- Takeaways Section -->
+        <div class="takeaways">
+            <h2>Takeaways</h2>
+            <ul>
+                <li>Key insight or learning from the design process</li>
+                <li>How user research and testing influenced the final design</li>
+                <li>Technical or design challenges overcome</li>
+                <li>Impact on user experience and business goals</li>
+                <li>Future improvements or iterations planned</li>
+            </ul>
+        </div>
+
+        <!-- Navigation to Other Projects -->
+        <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
+            <a href="crosscurrents.html" class="cta-nav-btn">Previous Project</a>
+            <a href="custom_clack.html" class="cta-nav-btn">Next Project</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 by Aaron Fiddelke</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll reveal animation
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+</body>
+</html>

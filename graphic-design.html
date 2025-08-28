@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design Projects - Aaron Fiddelke</title>
+    <style>
+        /* ...existing code from uiux.html styles... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: bgMove 18s ease-in-out infinite alternate;
+        }
+        @keyframes bgMove {
+            0% { background-position: 20% 80%, 80% 20%, 40% 40%; }
+            50% { background-position: 30% 70%, 70% 30%, 50% 50%; }
+            100% { background-position: 15% 85%, 85% 15%, 35% 45%; }
+        }
+        .header { position: fixed; top: 0; width: 100%; background: #fff; border-bottom: 1px solid #e5e7eb; color: #222; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a { color: #222; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; padding: 0.5rem 1rem; border-radius: 8px; }
+        .nav-menu a:hover { color: #e76f38; background: rgba(255, 130, 71, 0.08); }
+        .nav-menu a::after { background: linear-gradient(90deg, #e76f38, #e76f38); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+                h1 {
+            text-align: center;
+            color: #e76f38;
+            margin-top: 5rem;
+            margin-bottom: 3rem;
+        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .project-card { background: #fff; border-radius: 18px; box-shadow: 0 2px 8px rgba(255,130,71,0.08); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s; }
+        .project-card:hover { box-shadow: 0 4px 16px rgba(255,130,71,0.18); }
+        .project-thumb { width: 100%; height: 220px; object-fit: cover; }
+        .project-content { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+        .project-title { font-size: 1.5rem; font-weight: 700; color: #e76f38; margin-bottom: 1rem; }
+        .project-desc { font-size: 1rem; color: #444; margin-bottom: 2rem; }
+        .project-cta { align-self: flex-start; background: linear-gradient(135deg, #e76f38, #e76f38); color: #fff; padding: 0.8rem 2rem; border: none; border-radius: 50px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+        .project-cta {
+            align-self: flex-start;
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            text-decoration: none;
+        }
+        .project-cta:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+            transform: scale(1.1);
+        }
+        .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="hover-underline">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="uiux.html">UI/UX</a></li>
+                <li><a href="graphic-design.html" class="nav-current">Graphic Design</a></li>
+                <li><a href="illustration.html">Illustrations</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Graphic Design Projects</h1>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/OO_BrandIdentity.jpg" alt="Orbit Outfitters" class="project-thumb">
+                <div class="project-content">
+                    <div class="project-title">Orbit Outfitters</div>
+                    <div class="project-desc">A comprehensive branding project including logo, color palette, and visual guidelines for a modern business.</div>
+                    <a href="orbit-outfitters.html" class="project-cta">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/CB+Logo.png" alt="Commerce Bank" class="project-thumb">
+                <div class="project-content">
+                    <div class="project-title">Commerce Bank</div>
+                    <div class="project-desc">Designing print and digital collateral to support marketing campaigns and brand storytelling.</div>
+                    <a href="commerce-bank.html" class="project-cta">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/Untitled-2-01.png" alt="Border Brewing" class="project-thumb">
+                <div class="project-content">
+                    <div class="project-title">Border Brewing</div>
+                    <div class="project-desc">A Kansas City, MO brewery that combine aesthetics with functionality for a memorable experiences.</div>
+                    <a href="border-brewing.html" class="project-cta">View Project</a>
+                </div>
+            </div>
+        </div>
+        <!-- Intro Section -->
+       <div style="max-width:700px;padding:5rem 0rem; margin:0 auto 0rem auto;text-align:center;font-size:1.2rem;color:#444;">
+            <p>Explore my graphic design portfolio, featuring branding, collateral, and packaging projects that bring ideas to life through thoughtful, creative solutions.</p>
+        </div>
+        <!-- Skills/Tools Section -->
+             <section style="background:#fff7f2;padding:2rem 6rem; margin:0 auto 0rem auto;border-radius:16px;max-width:900px;margin:0 auto 2.5rem auto;box-shadow:0 2px 8px rgba(255,130,71,0.06);">
+            <h2 style="color:#e76f38;text-align:center;margin-bottom:1rem;">Skills & Tools</h2>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;font-size:1.1rem;color:#222;">
+                <div>Photoshop</div>
+                <div>Illustrator</div>
+                <div>InDesign</div>
+                <div>Branding</div>
+                <div>Print Design</div>
+                <div>Packaging</div>
+                <div>Typography</div>
+                <div>Layout</div>
+                <div>Color Theory</div>
+                <div>Creative Direction</div>
+            </div>
+        </section>
+        <!-- Process Overview Section -->
+        <section style="background:#fff;padding:2rem 1.5rem;border-radius:16px;max-width:900px;margin:0 auto 2.5rem auto;box-shadow:0 2px 8px rgba(255,130,71,0.06);">
+            <h2 style="color:#e76f38;text-align:center;margin-bottom:1rem;">My Design Process</h2>
+            <ol style="max-width:700px;margin:0 auto;font-size:1.1rem;color:#444;line-height:1.7;">
+                <li><strong>Discovery:</strong> Understand client needs, brand values, and project goals.</li>
+                <li><strong>Research:</strong> Analyze market trends, competitors, and audience.</li>
+                <li><strong>Concepting:</strong> Develop creative concepts and mood boards.</li>
+                <li><strong>Design:</strong> Create visual assets, layouts, and mockups.</li>
+                <li><strong>Refinement:</strong> Iterate based on feedback and finalize designs.</li>
+                <li><strong>Delivery:</strong> Prepare files for print or digital use and ensure brand consistency.</li>
+            </ol>
+        </section>
+        <!-- Contact/Collaboration CTA -->
+        <section style="background:#e76f38;color:#fff;padding:2.5rem 1.5rem;text-align:center;border-radius:16px;max-width:900px;margin:3rem auto 2rem auto;box-shadow:0 2px 8px rgba(255,130,71,0.10);">
+            <h2 style="margin-bottom:1rem;">Let's Collaborate!</h2>
+            <p style="font-size:1.2rem;margin-bottom:2rem;">Interested in working together or have a branding project in mind? Reach out and let's create something amazing.</p>
+            <a href="#contact" style="background:#fff;color:#e76f38;padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:1.1rem;text-decoration:none;box-shadow:0 2px 8px rgba(255,130,71,0.10);transition:background 0.2s;">Contact Me</a>
+        </section>
+    </div>
+    <script>
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+</body>
+</html>

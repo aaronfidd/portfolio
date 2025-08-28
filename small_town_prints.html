@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Town Prints Gallery - Aaron Fiddelke</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fb;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            color: #222;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-underline {
+            font-size: 1.3rem;
+            color: #e76f38;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        
+        }
+        .hover-underline::after,
+        .hover-underline::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #e76f38, #e76f38);
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hover-underline::after {
+            bottom: -6px;
+            transform-origin: right;
+        }
+        .hover-underline::before {
+            top: -6px;
+            transform-origin: left;
+        }
+        .hover-underline:hover::after,
+        .hover-underline:hover::before {
+            transform: scaleX(1);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: #222;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+        .nav-menu a:hover {
+            color: #e76f38;
+            background: rgba(255, 130, 71, 0.08);
+        }
+        .nav-menu a::after {
+            background: linear-gradient(90deg, #e76f38, #e76f38);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
+        }
+        h1 {
+            margin-top: 3.5rem;
+            text-align: center;
+            color: #e76f38;
+            margin-bottom: 3rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+        .gallery-item:hover {
+            box-shadow: 0 4px 16px rgba(255,130,71,0.18);
+        }
+        .gallery-thumb {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        /* Shadowbox styles */
+        .shadowbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .shadowbox.active {
+            display: flex;
+        }
+        .shadowbox-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+            background: #fff;
+        }
+        .shadowbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #e76f38;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cta-nav-btn {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.08);
+            letter-spacing: .1em;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            display: inline-block;
+        }
+        .cta-nav-btn:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+        @media (max-width: 600px) {
+            .container { padding: 5rem 0.5rem 1rem 0.5rem; }
+            .gallery-thumb { height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/" style="text-decoration:none;">
+            <div class="hover-underline">Aaron Fiddelke</div>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="uiux.html">UI/UX</a></li>
+                <li><a href="graphic-design.html">Graphic Design</a></li>
+                <li><a href="illustration.html" class="nav-current">Illustrations</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Small Town Prints Gallery</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openShadowbox('images/hi-fi.jpg')">
+                <img src="images/hi-fi.jpg" alt="Lost Sol 1" class="gallery-thumb">
+            </div>
+            <div class="gallery-item" onclick="openShadowbox('images/port.jpg')">
+                <img src="images/port.jpg" alt="Lost Sol 2" class="gallery-thumb">
+            </div>
+            <div class="gallery-item" onclick="openShadowbox('images/Space-Fishingv3.jpg')">
+                <img src="images/Space-Fishingv3.jpg" alt="Lost Sol 3" class="gallery-thumb">
+            </div>
+            <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+             <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+             <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+             <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+             <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+             <div class="gallery-item" onclick="openShadowbox('images/work.jpg')">
+                <img src="images/work.jpg" alt="Lost Sol 4" class="gallery-thumb">
+            </div>
+        </div>
+        <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
+            <a href="helena-motors.html" class="cta-nav-btn">Previous Project</a>
+            <a href="small_town_prints.html" class="cta-nav-btn">Next Project</a>
+        </div>
+    </div>
+    <!-- Shadowbox -->
+    <div class="shadowbox" id="shadowbox">
+        <button class="shadowbox-close" onclick="closeShadowbox()">&times;</button>
+        <img src="" alt="Large view" class="shadowbox-img" id="shadowbox-img">
+    </div>
+    <script>
+        function openShadowbox(imgSrc) {
+            var shadowbox = document.getElementById('shadowbox');
+            var shadowboxImg = document.getElementById('shadowbox-img');
+            shadowboxImg.src = imgSrc;
+            shadowbox.classList.add('active');
+        }
+        function closeShadowbox() {
+            var shadowbox = document.getElementById('shadowbox');
+            var shadowboxImg = document.getElementById('shadowbox-img');
+            shadowbox.classList.remove('active');
+            shadowboxImg.src = '';
+        }
+        // Close shadowbox when clicking outside image
+        document.getElementById('shadowbox').addEventListener('click', function(e) {
+            if (e.target === this) closeShadowbox();
+        });
+        // ESC key closes shadowbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeShadowbox();
+        });
+    </script>
+</body>
+</html>
