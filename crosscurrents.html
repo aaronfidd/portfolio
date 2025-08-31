@@ -63,6 +63,66 @@
             gap: 2rem;
             list-style: none;
         }
+                .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #e76f38;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 850px) {
+            .header {
+                padding: 1rem 1.5rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                position: relative;
+            }
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                right: 1.5rem;
+                background: #fff;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 220px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                border-radius: 12px;
+                padding: 1rem 0.5rem;
+                display: none;
+                z-index: 1099;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu a {
+                width: 100%;
+                display: block;
+                padding: 0.75rem 1rem;
+                text-align: left;
+            }
+        }
         .nav-menu a {
             color: #222;
             text-decoration: none;
@@ -207,6 +267,7 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
+
     </style>
 </head>
 <body>
@@ -215,6 +276,11 @@
         <a href="/" style="text-decoration:none;">
             <div class="hover-underline">Aaron Fiddelke</div>
         </a>
+                <button class="hamburger" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>
             <ul class="nav-menu">
                 <li><a href="uiux.html" class="nav-current">UI/UX</a></li>
@@ -230,20 +296,100 @@
         <div class="section">
             <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">UI/UX Case Study &amp; Redesign</div>
             <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Lead Designer, Researcher</div>
-            <div style="font-size:1rem;color:#888;">Tools: Figma, Adobe XD, Illustrator</div>
+            <div style="font-size:1rem;color:#888;">Tools: Figma, Adobe CC, FigJam, Pen and Paper</div>
         </div>
-        <div class="hero-imgs">
-            <img src="images/cc-hero-1.jpg" alt="CrossCurrents Fly Shop Mockups">
-            <img src="images/cc-hero-2.jpg" alt="CrossCurrents Fly Shop Mockups">
-            <img src="images/cc-hero-3.jpg" alt="CrossCurrents Fly Shop Mockups">
-        </div>
+
         <div class="overview section">
             <h2>Overview</h2>
-            <p>CrossCurrents Fly Shop is a Montana-based retailer specializing in fly fishing gear, guided trips, and education. The redesign focused on improving the online experience for new and returning customers, making it easier to find products, book trips, and access resources.</p>
+            <p>CrossCurrents Fly Shop is a small business with two locations. Their main location, Craig, Montana and their secondary location, Helena, Montana.
+                <br><br>
+            <b>Problem:</b> The CrossCurrents webpage, over a decade old, suffers from broken links, outdated information, and a convoluted user experience. These issues are driving potential customers to competitors, seeking a more seamless shopping and booking experience.
+                <br><br>
+            <b>Solution:</b> Transform the digital presence by modernizing, simplifying, and reorganizing the desktop version while enhancing mobile accessibility, ensuring a smooth and user-friendly experience across all devices.</p>
+                    </div>
+            <div class="persona-img">
+                <img src="images/Header.png" alt="User Persona">
+            </div>
         </div>
         <div class="section">
             <h2>Understanding the User</h2>
+            <p>
+                <b>Research Goals:</b>Understanding the who the main demographic is and determine if the experience is desktop or mobile focused.
+                <br><br>
+                <b>Methodologies:</b>Competitive Analysis, User Personas.
+            </p>
             <div class="user-table">
+                <!-- SplideJS Carousel Section -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<style>
+    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .splide__slide img { width: 100%; height: auto; border-radius: 8px; }
+    .splide__arrow { display: flex !important; opacity: 1 !important; visibility: visible !important; }
+</style>
+<div class="container">
+    <h2>SplideJS Carousel Test</h2>
+    <section id="main-carousel" class="splide" aria-label="Main carousel">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Slide 1"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Slide 2"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Slide 3"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Slide 4"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Slide 1"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Slide 2"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Slide 3"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Slide 4"></li>
+            </ul>
+        </div>
+    </section>
+    <section id="thumbnail-carousel" class="splide" aria-label="Thumbnails" style="margin-top:1.5rem;">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Thumb 1"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Thumb 2"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Thumb 3"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Thumb 4"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Thumb 1"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Thumb 2"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Thumb 3"></li>
+                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Thumb 4"></li>
+            </ul>
+        </div>
+    </section>
+</div>
+    <!-- Embedded Google Chart Test -->
+<div style="width:100%;max-width:900px;margin:40px auto;">
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSc7AUpx2KpKVD51iaNs9n23vrx8GYwJ4R1bKrnnUtF89-Lx2JQEpdf-tV6qoB4ukRSTCF-3nHMqB-T/pubhtml?gid=2069237634&single=true" width="100%" height="600" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen></iframe>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var main = new Splide('#main-carousel', {
+        type      : 'fade',
+        rewind    : true,
+        pagination: false,
+        arrows    : true,
+    });
+    var thumbnails = new Splide('#thumbnail-carousel', {
+        fixedWidth  : 100,
+        fixedHeight : 60,
+        gap         : 10,
+        rewind      : true,
+        pagination  : false,
+        isNavigation: true,
+        focus       : 'center',
+        breakpoints : {
+            600: {
+                fixedWidth : 60,
+                fixedHeight: 44,
+            },
+        },
+    });
+    main.sync(thumbnails);
+    main.mount();
+    thumbnails.mount();
+});
+    </script>
                 <img src="images/cc-user-table.jpg" alt="User Research Table">
             </div>
             <div class="persona-img">
@@ -310,6 +456,7 @@
             <a href="custom_clack.html" class="cta-nav-btn">Previous Project</a>
             <a href="creditmate.html" class="cta-nav-btn">Next Project</a>
         </div>
+        
     </main>
     <footer class="footer">
         <p>&copy; 2025 by Aaron Fiddelke</p>
@@ -362,5 +509,106 @@
                 });
             }
     </script>
+    <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', function() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                        navMenu.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    }
+                }
+            });
+        });
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var main = new Splide('#main-carousel', {
+                rewind    : true,
+                pagination: false,
+                arrows    : true,
+            });
+            var thumbnails = new Splide('#thumbnail-carousel', {
+                fixedWidth  : 100,
+                fixedHeight : 60,
+                gap         : 10,
+                rewind      : true,
+                pagination  : false,
+                isNavigation: true,
+                focus       : 'center',
+                breakpoints : {
+                    600: {
+                        fixedWidth : 60,
+                        fixedHeight: 44,
+                    },
+                },
+            });
+            main.sync(thumbnails);
+            main.mount();
+            thumbnails.mount();
+        });
+    </script>
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const images = document.querySelectorAll('.carousel-img');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const thumbnails = document.querySelectorAll('.carousel-thumb');
+            let currentIndex = 0;
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                thumbnails.forEach((thumb, idx) => {
+                    thumb.classList.toggle('active', idx === currentIndex);
+                });
+            }
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateCarousel();
+            });
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateCarousel();
+            });
+            thumbnails.forEach((thumb, idx) => {
+                thumb.addEventListener('click', function() {
+                    currentIndex = idx;
+                    updateCarousel();
+                });
+            });
+            updateCarousel();
+        });
+    </script>
+</div>
 </body>
 </html>

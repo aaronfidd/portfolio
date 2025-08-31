@@ -63,6 +63,66 @@
             gap: 2rem;
             list-style: none;
         }
+                .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #e76f38;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 850px) {
+            .header {
+                padding: 1rem 1.5rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                position: relative;
+            }
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                right: 1.5rem;
+                background: #fff;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 220px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                border-radius: 12px;
+                padding: 1rem 0.5rem;
+                display: none;
+                z-index: 1099;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu a {
+                width: 100%;
+                display: block;
+                padding: 0.75rem 1rem;
+                text-align: left;
+            }
+        }
         .nav-menu a {
             color: #222;
             text-decoration: none;
@@ -303,6 +363,11 @@
         <a href="/" style="text-decoration:none;">
             <div class="hover-underline">Aaron Fiddelke</div>
         </a>
+                <button class="hamburger" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>
             <ul class="nav-menu">
                 <li><a href="uiux.html" class="nav-current">UI/UX</a></li>
@@ -502,6 +567,46 @@
             });
         });
 
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+    <script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', function() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                        navMenu.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    }
+                }
+            });
+        });
         // Following cursor dot effect
         if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
             new cursoreffects.followingDotCursor({ color: ["#323232a6"] });

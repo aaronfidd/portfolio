@@ -63,6 +63,66 @@
             gap: 2rem;
             list-style: none;
         }
+                .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1100;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            margin: 4px 0;
+            background: #e76f38;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 850px) {
+            .header {
+                padding: 1rem 1.5rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                position: relative;
+            }
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                right: 1.5rem;
+                background: #fff;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 220px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                border-radius: 12px;
+                padding: 1rem 0.5rem;
+                display: none;
+                z-index: 1099;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu a {
+                width: 100%;
+                display: block;
+                padding: 0.75rem 1rem;
+                text-align: left;
+            }
+        }
         .nav-menu a {
             color: #222;
             text-decoration: none;
@@ -91,7 +151,7 @@
         h2 {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-top: 2.5rem;
+            margin-top: .5rem;
             margin-bottom: 1rem;
             color: #222;
         }
@@ -127,6 +187,12 @@
             margin: 0 auto 1.5rem auto;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+        }
+        .projects img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 24px rgba(255,130,71,0.12);
         }
         .takeaways {
             background: #fff7f2;
@@ -176,6 +242,51 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
+        /* Shadowbox styles */
+    .shadowbox-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(34,34,34,0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        transition: opacity 0.3s;
+    }
+    .shadowbox-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .shadowbox-img {
+        max-width: 90vw;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+        background: #fff;
+    }
+    .shadowbox-close {
+        position: absolute;
+        top: 2.5vw;
+        right: 3vw;
+        background: #fff;
+        color: #e76f38;
+        border: none;
+        font-size: 2.2rem;
+        font-weight: bold;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        cursor: pointer;
+        z-index: 2100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+    }
+    .shadowbox-close:hover {
+        background: #ffe5d6;
+    }
     </style>
 </head>
 <body>
@@ -184,6 +295,11 @@
         <a href="/" style="text-decoration:none;">
             <div class="hover-underline">Aaron Fiddelke</div>
         </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>
             <ul class="nav-menu">
                 <li><a href="uiux.html">UI/UX</a></li>
@@ -200,11 +316,6 @@
             <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">Corporate Design & Marketing</div>
             <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Senior Graphic Designer</div>
             <div style="font-size:1rem;color:#888;">Tools: Adobe Creative Suite, Figma</div>
-        </div>
-        <div class="hero-imgs">
-            <img src="images/cb-hero-1.jpg" alt="Commerce Bank Designs">
-            <img src="images/cb-hero-2.jpg" alt="Commerce Bank Campaigns">
-            <img src="images/cb-hero-3.jpg" alt="Commerce Bank UI/UX">
         </div>
         <div class="overview section">
             <h2>Overview</h2>
@@ -247,6 +358,11 @@
             <a href="border-brewing.html" class="cta-nav-btn">Next Project</a>
         </div>
     </main>
+    <!-- Shadowbox Modal -->
+    <div class="shadowbox-overlay hidden" id="shadowboxOverlay">
+        <button class="shadowbox-close" id="shadowboxClose" aria-label="Close image">&times;</button>
+        <img src="" alt="Full Size" class="shadowbox-img" id="shadowboxImg">
+    </div>
     <footer class="footer">
         <p>&copy; 2025 by Aaron Fiddelke</p>
     </footer>
@@ -290,5 +406,81 @@
         });
     }
 </script>
+<script>
+        // Hamburger menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', function() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !expanded);
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                        navMenu.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    }
+                }
+            });
+        });
+        // Following cursor dot effect
+        if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
+            new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
+        } else {
+            // Fallback: simple dot
+            const dot = document.createElement('div');
+            dot.style.position = 'fixed';
+            dot.style.width = '13px';
+            dot.style.height = '13px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#323232a6';
+            dot.style.pointerEvents = 'none';
+            dot.style.zIndex = '9999';
+            dot.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(dot);
+            document.addEventListener('mousemove', function(e) {
+                dot.style.left = e.clientX + 'px';
+                dot.style.top = e.clientY + 'px';
+            });
+        }
+    </script>
+    <script>
+    // Shadowbox modal for project images
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.projects img');
+        const overlay = document.getElementById('shadowboxOverlay');
+        const overlayImg = document.getElementById('shadowboxImg');
+        const closeBtn = document.getElementById('shadowboxClose');
+        images.forEach(img => {
+            img.addEventListener('click', function() {
+                overlay.classList.remove('hidden');
+                overlayImg.src = img.src;
+                overlayImg.alt = img.alt;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        closeBtn.addEventListener('click', function() {
+            overlay.classList.add('hidden');
+            overlayImg.src = '';
+            document.body.style.overflow = '';
+        });
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                overlay.classList.add('hidden');
+                overlayImg.src = '';
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (!overlay.classList.contains('hidden') && (e.key === 'Escape' || e.key === 'Esc')) {
+                overlay.classList.add('hidden');
+                overlayImg.src = '';
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    </script>
 </body>
 </html>
