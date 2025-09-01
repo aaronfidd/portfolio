@@ -123,6 +123,21 @@
                 text-align: left;
             }
         }
+        @media (max-width: 850px) {
+            .main-content {
+                padding: 1.5rem 0.5rem;
+            }
+            .hero-imgs {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-imgs img {
+                max-width: 100vw !important;
+                width: 100% !important;
+                height: auto !important;
+                min-width: 0 !important;
+            }
+        }
         .nav-menu a {
             color: #222;
             text-decoration: none;
@@ -173,31 +188,75 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin: 2rem 0 2.5rem 0;
+            justify-content: center;
         }
         .hero-imgs img {
-            width: 320px;
+            width: 850px;
             max-width: 100%;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            position:flex;
+            display: block;
+            margin: 0 auto;
+        }
+        .hero-imgs img:hover {
+            box-shadow: 0 4px 24px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
         .overview, .user-table, .persona-img, .info-arch-img, .site-map-img {
             margin-bottom: 2rem;
         }
         .user-table img, .persona-img img, .info-arch-img img, .site-map-img img {
             width: 100%;
-            max-width: 700px;
+            max-width: 850px;
             display: block;
             margin: 0 auto;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
         }
-        .cta-btns {
+        .user-table img:hover, .persona-img img:hover, .info-arch-img img:hover, .site-map-img img:hover {
+            box-shadow: 0 4px 24px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+        }
+        /* Shadowbox modal styles */
+        .shadowbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.65);
             display: flex;
-            gap: 2rem;
+            align-items: center;
             justify-content: center;
-            margin: 2.5rem 0 2rem 0;
+            z-index: 99999;
+            transition: opacity 0.2s;
         }
-        .cta-btn {
+        .shadowbox-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+            background: #fff;
+        }
+        .shadowbox-modal-close {
+            position: absolute;
+            top: 32px;
+            right: 48px;
+            font-size: 2.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 100001;
+            transition: color 0.2s;
+        }
+        .shadowbox-modal-close:hover {
+            color: #e76f38;
+        }
+        .cta-btn, .cta-nav-btn {
             padding: 0.7rem 2.2rem;
             border: 1px solid #bbb;
             border-radius: 30px;
@@ -207,44 +266,13 @@
             font-size: 1rem;
             text-decoration: none;
             transition: background 0.2s, color 0.2s;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        .cta-btn:hover {
+        .cta-btn:hover, .cta-nav-btn:hover {
             background: #e76f38;
             color: #fff;
             border-color: #e76f38;
-        }
-        .takeaways {
-            background: #fff7f2;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 2px 8px rgba(255,130,71,0.06);
-        }
-        .takeaways h2 {
-            margin-top: 0;
-        }
-        .takeaways ul {
-            margin: 1rem 0 0 1.5rem;
-            color: #444;
-        }
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #222;
-        }
-        @media (max-width: 700px) {
-            .main-content {
-                padding: 1.5rem 0.5rem;
-            }
-            .hero-imgs {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-                .nav-menu a.nav-current {
-            font-weight: 700;
-            color: #e76f38;
         }
         .cta-nav-btn {
             background: linear-gradient(135deg, #e76f38, #e76f38);
@@ -267,7 +295,34 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
-
+        .takeaways {
+            background: #fff7f2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 8px rgba(255,130,71,0.06);
+        }
+        .takeaways h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .takeaways p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+        .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
+        }
+        .footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -307,58 +362,20 @@
                 <br><br>
             <b>Solution:</b> Transform the digital presence by modernizing, simplifying, and reorganizing the desktop version while enhancing mobile accessibility, ensuring a smooth and user-friendly experience across all devices.</p>
                     </div>
-            <div class="persona-img">
-                <img src="images/Header.png" alt="User Persona">
+            <div class="hero-imgs" style="justify-content:center;">
+                <img src="images/Header.png" style="max-width:850px;display:block;margin:0 auto;" alt="User Persona" class="shadowbox-img">
             </div>
         </div>
         <div class="section">
             <h2>Understanding the User</h2>
             <p>
-                <b>Research Goals:</b>Understanding the who the main demographic is and determine if the experience is desktop or mobile focused.
+                <b>Research Goals: </b>Understanding the who the main demographic is and determine if the experience is desktop or mobile focused.
                 <br><br>
-                <b>Methodologies:</b>Competitive Analysis, User Personas.
+                <b>Methodologies: </b>Competitive Analysis, User Personas.
             </p>
-            <div class="user-table">
-                <!-- SplideJS Carousel Section -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<style>
-    .container { max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-    .splide__slide img { width: 100%; height: auto; border-radius: 8px; }
-    .splide__arrow { display: flex !important; opacity: 1 !important; visibility: visible !important; }
-</style>
-<div class="container">
-    <h2>SplideJS Carousel Test</h2>
-    <section id="main-carousel" class="splide" aria-label="Main carousel">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Slide 1"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Slide 2"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Slide 3"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Slide 4"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Slide 1"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Slide 2"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Slide 3"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Slide 4"></li>
-            </ul>
-        </div>
-    </section>
-    <section id="thumbnail-carousel" class="splide" aria-label="Thumbnails" style="margin-top:1.5rem;">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Thumb 1"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Thumb 2"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Thumb 3"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Thumb 4"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/01.jpg" alt="Thumb 1"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/02.jpg" alt="Thumb 2"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/03.jpg" alt="Thumb 3"></li>
-                <li class="splide__slide"><img src="https://splidejs.com/images/slides/general/04.jpg" alt="Thumb 4"></li>
-            </ul>
-        </div>
-    </section>
-</div>
+
     <!-- Embedded Google Chart Test -->
-<div style="width:100%;max-width:900px;margin:40px auto;">
+<div style="width:100%;max-width:850px;margin:40px auto;">
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSc7AUpx2KpKVD51iaNs9n23vrx8GYwJ4R1bKrnnUtF89-Lx2JQEpdf-tV6qoB4ukRSTCF-3nHMqB-T/pubhtml?gid=2069237634&single=true" width="100%" height="600" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen></iframe>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -390,77 +407,120 @@ document.addEventListener('DOMContentLoaded', function () {
     thumbnails.mount();
 });
     </script>
-                <img src="images/cc-user-table.jpg" alt="User Research Table">
-            </div>
-            <div class="persona-img">
-                <img src="images/cc-persona.jpg" alt="User Persona">
-            </div>
+                <div class="user-table">
+                <!-- SplideJS Carousel Section -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<style>
+    .container { max-width: 850px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .splide__slide img { max-width: 850px; height: auto; border-radius: 8px; }
+    .splide__arrow { display: flex !important; opacity: 1 !important; visibility: visible !important; }
+</style>
+<div class="container">
+    <h2>SplideJS Carousel Test</h2>
+    <section id="main-carousel" class="splide" aria-label="Main carousel">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+01.jpg" alt="Slide 1"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+02.png" alt="Slide 2"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+03.jpg" alt="Slide 3"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+04.png" alt="Slide 4"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+05.jpg" alt="Slide 5"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+06.png" alt="Slide 6"></li>
+            </ul>
         </div>
+    </section>
+    <section id="thumbnail-carousel" class="splide" aria-label="Thumbnails" style="margin-top:1.5rem;">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+01.jpg" alt="Thumb 1"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+02.png" alt="Thumb 2"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+03.jpg" alt="Thumb 3"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+04.png" alt="Thumb 4"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+05.jpg" alt="Thumb 5"></li>
+                <li class="splide__slide"><img src="images/CrossCurrents+-+Persona+06.png" alt="Thumb 6"></li>
+            </ul>
+        </div>
+    </section>
+</div>
+
         <div class="section">
             <h2>Information Architecture</h2>
             <div class="info-arch-img">
-                <img src="images/cc-info-arch.jpg" alt="Information Architecture Diagram">
+                <img src="images/IA+for+CrossCurrents.jpg" alt="Information Architecture Diagram" class="shadowbox-img">
             </div>
         </div>
         <div class="section">
             <h2>Site Map</h2>
             <div class="site-map-img">
-                <img src="images/cc-site-map.jpg" alt="Site Map Diagram">
+                <img src="images/Site+Map.jpg" alt="Site Map Diagram" class="shadowbox-img">
             </div>
         </div>
         <div class="section">
             <h2>Wireframes</h2>
-            <p>Initial wireframes were created to plan the structure of the site and key user journeys, focusing on product navigation and trip booking. The wireframes set the foundation for a streamlined experience and clear information hierarchy.</p>
+            <p>The current structure of CrossCurrent’s webpage is not only complex but also plagued by inconsistent placement and UI elements throughout the web experience. My objective is to establish both a cohesive visual and information hierarchy, ultimately leading to a simpler, more intuitive user experience. </p>
+            <img src="images/Wireframe+Drawn.png" alt="Wireframe Sketch" class="shadowbox-img"><br>
         </div>
         <div class="section">
             <h2>Usability Test</h2>
-            <p>Usability testing was conducted with real users to validate workflows, identify issues, and gather feedback on navigation and content. The results guided further improvements to the design.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem;">
+<p>Following the initial iterations of multiple wireframes, usability testing was conducted both in person and with the Coursera Classroom Community. This applied to both the physical and digital wireframes.</p>            <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.5rem;">
                 <div style="flex:1;min-width:220px;">
-                    <h3>User Interview Takeaways</h3>
+                    <h3><b>User Interview Takeaways</b></h3>
                     <ul>
-                        <li>Users wanted more intuitive navigation to quickly find products and book trips.</li>
-                        <li>Information about guides and trip options needed to be more accessible.</li>
+                        <li>Multiple users found that the simplicity help navigation and what is the most important content.</li>
+                        <li>Verbiage was difficult to understand in areas and needed more explanation.</li>
+                        <li>Some visual hierarchy issues leading to users to have a negative impact on their experience.</li>
                     </ul>
+                    
                 </div>
                 <div style="flex:1;min-width:220px;">
-                    <h3>Direct System Observations</h3>
+                    <h3><b>Direct System Observations</b></h3>
                     <ul>
-                        <li>Navigation and search were the most used features and must be prominent.</li>
-                        <li>Users responded well to clear calls-to-action and visual hierarchy.</li>
+                        <li>Confused users on what page they were on and what could be an active link.</li>
+                        <li>Adding additional subhead help the user understand what each section was going to navigate to and why.</li>
+                        <li>Adjust the design and simplifying both the header and footer allowed the user to be more familiar with common web navigation.</li>
                     </ul>
                 </div>
+                <img src="images/Wireframe++Compare.png" alt="Wirefram comparison" class="shadowbox-img">
             </div>
         </div>
         <div class="section">
             <h2>Wireframe - Digital</h2>
-            <p>Digital wireframes refined layout, visual hierarchy, and content. These helped align team and client vision prior to final mockups and asset delivery.</p>
-        </div>
+        <p>During the usability testing phase, I gathered insights from users' thoughts, comments, and concerns. These findings were then applied to enhance other pages of the website, ensuring a consistent and user-centered design across the entire site.</p>        </div>
+        <img src="images/Wireframe+Digital.png" alt="Wirefram digital" class="shadowbox-img">
         <div class="section">
             <h2>High Fidelity</h2>
             <p>High-fidelity mockups showcased the final design, ready for development and launch.</p>
         </div>
-        <div class="cta-btns">
-            <a href="#" class="cta-btn">View Wireframes</a>
-            <a href="#" class="cta-btn">View Prototype</a>
+        <img src="images/hi-fi.jpg" alt="Wirefram comparison" class="shadowbox-img"><br>
+        <div class="cta-btns" style="display:flex;justify-content:center;gap:2rem;">
+            <a href="https://www.figma.com/proto/mWQa6VsRfZ3zVh9IR4IA0N/CrossCurrents?page-id=40%3A1387&node-id=40-2033&viewport=1348%2C676%2C0.23&t=RScqdhaJu6IbCAO4-1&scaling=min-zoom" class="cta-btn" target="_blank" rel="noopener">Web Prototype</a>
+            <a href="https://www.figma.com/proto/mWQa6VsRfZ3zVh9IR4IA0N/CrossCurrents?page-id=40%3A1388&node-id=40-2926&viewport=1180%2C1209%2C0.28&t=v8SaJob3ajO4VcfZ-1&scaling=min-zoom" class="cta-btn" target="_blank" rel="noopener">Mobile Prototype</a>
         </div>
         <div class="takeaways">
             <h2>Takeaways</h2>
             <ul>
-                <li>Redesign improved navigation and user experience for both new and returning customers.</li>
-                <li>Information architecture and user research were key to successful outcomes.</li>
-                <li>Usability testing and feedback guided final refinements and launch.</li>
+                <li>Recognized and addressed personal biases to ensure they did not negatively influence project outcomes.</li>
+                <li>Applied research-driven problem-solving to develop solutions that were both relevant and effective.</li>
+                <li>Explored multiple design iterations to refine ideas and identify the best approach.</li>
+                 <li>Conducted regular testing to validate solutions and uncover areas for improvement.</li>
+                <li>Simplified complex processes through clear flowcharts and streamlined prototype experiences.</li>
+                <li>Maintained consistent design practices to accelerate the overall workflow.</li>
             </ul>
         </div>
         <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
-            <a href="custom_clack.html" class="cta-nav-btn">Previous Project</a>
-            <a href="creditmate.html" class="cta-nav-btn">Next Project</a>
+            <a href="custom_clack.html" class="cta-nav-btn" style="display:inline-block;">Previous Project</a>
+            <a href="creditmate.html" class="cta-nav-btn" style="display:inline-block;">Next Project</a>
         </div>
         
     </main>
-    <footer class="footer">
+    <footer class="footer" style="text-align:center;">
         <p>&copy; 2025 by Aaron Fiddelke</p>
     </footer>
+    <!-- Shadowbox Modal HTML -->
+    <div id="shadowboxModal" class="shadowbox-modal" style="display:none;">
+        <button class="shadowbox-modal-close" id="shadowboxCloseBtn" aria-label="Close">&times;</button>
+        <img id="shadowboxModalImg" src="" alt="Expanded Image">
+    </div>
     <script>
         // Smooth scrolling and animations
         document.addEventListener('DOMContentLoaded', function() {
@@ -607,6 +667,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
             updateCarousel();
+        });
+    </script>
+    <script>
+        // Shadowbox modal logic
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('shadowboxModal');
+            var modalImg = document.getElementById('shadowboxModalImg');
+            var closeBtn = document.getElementById('shadowboxCloseBtn');
+            document.querySelectorAll('.shadowbox-img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                });
+            });
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            });
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                }
+            });
         });
     </script>
 </div>

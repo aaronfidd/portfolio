@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProjectName — Aaron Fiddelke</title>
+    <title>CreditMate - Aaron Fiddelke</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -145,7 +145,7 @@
         h1 {
             font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #222;
         }
         h2 {
@@ -157,7 +157,7 @@
         }
         h3 {
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 650;
             margin-top: 2rem;
             margin-bottom: 0.5rem;
             color: #222;
@@ -166,124 +166,176 @@
             margin-bottom: 2.5rem;
         }
         .project-meta {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 1.2rem;
         }
-        .meta-overview {
-            font-size: 1rem;
+        .project-subtitle {
+            font-size: 1.1rem;
             color: #444;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
         }
-        .meta-row {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .meta-item {
+        .meta-info {
             font-size: 1rem;
             color: #888;
+            margin-bottom: 0.5rem;
         }
-        .meta-label {
-            font-weight: 600;
-            color: #333;
+        .hero-imgs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem 0;
         }
-        .overview-section {
-            margin-bottom: 2.5rem;
+        .hero-imgs img {
+            width: 320px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        .overview-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #444;
-            margin-bottom: 1.5rem;
+        .overview {
+            margin-bottom: 2rem;
         }
-        .problem-solution {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .problem-solution-section {
+            display: flex;
+            flex-wrap: wrap;
             gap: 2rem;
-            margin: 1.5rem 0;
+            margin-top: 1.5rem;
         }
-        .problem-text, .solution-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #444;
-        }
-        .problem-label {
-            font-weight: 600;
-            color: #e53e3e;
-            margin-bottom: 0.5rem;
-        }
-        .solution-label {
-            font-weight: 600;
-            color: #38a169;
-            margin-bottom: 0.5rem;
+        .problem-solution-section > div {
+            flex: 1;
+            min-width: 220px;
         }
         .audience-section {
-            margin-bottom: 2.5rem;
+            margin-top: 1.5rem;
         }
         .audience-item {
             margin-bottom: 1.5rem;
         }
-        .audience-label {
-            font-weight: 600;
-            color: #333;
+        .audience-title {
+            font-size: 1.1rem;
+            font-weight: 650;
+            color: #222;
             margin-bottom: 0.5rem;
         }
-        .audience-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #444;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
-        .features-section {
-            margin-bottom: 2.5rem;
-        }
-        .feature-item {
-            margin-bottom: 1.2rem;
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         .feature-title {
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
+            color: #222;
+            margin-bottom: 0.8rem;
         }
-        .feature-description {
-            font-size: 1rem;
-            line-height: 1.7;
+        .feature-overview {
+            font-size: 0.95rem;
+            font-weight: 500;
             color: #444;
+            margin-bottom: 0.8rem;
         }
-        .design-principles {
-            background: #f8f9fb;
-            border-left: 4px solid #e76f38;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
+        .feature-list {
+            list-style: none;
+            padding: 0;
         }
-        .principle-item {
-            margin-bottom: 1rem;
+        .feature-list li {
+            color: #555;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
         }
-        .principle-title {
+        .feature-list li:before {
+            content: "•";
+            color: #e76f38;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .user-journey-section {
+            margin-top: 1.5rem;
+        }
+        .journey-step {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #e76f38;
+            padding-left: 1.5rem;
+        }
+        .journey-step-title {
+            font-size: 1rem;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
+            color: #222;
+            margin-bottom: 0.5rem;
         }
-        .principle-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #444;
+        .usability-findings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .usability-findings > div {
+            flex: 1;
+            min-width: 220px;
+        }
+        .findings-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #222;
+        }
+        .findings-list {
+            list-style: none;
+            padding: 0;
+        }
+        .findings-list li {
+            color: #555;
+            margin-bottom: 0.6rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .findings-list li:before {
+            content: "•";
+            color: #e76f38;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
         .image-section {
             margin: 2rem 0;
-            text-align: center;
         }
         .image-section img {
-            max-width: 100%;
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 0 auto;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
-        .simple-section {
-            margin-bottom: 2.5rem;
+        .cta-btns {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2.5rem 0 2rem 0;
         }
-        .simple-section h2 {
-            margin-bottom: 1rem;
+        .cta-btn {
+            padding: 0.7rem 2.2rem;
+            border: 1px solid #bbb;
+            border-radius: 30px;
+            background: #fff;
+            color: #222;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cta-btn:hover {
+            background: #e76f38;
+            color: #fff;
+            border-color: #e76f38;
         }
         .takeaways {
             background: #fff7f2;
@@ -294,18 +346,41 @@
         }
         .takeaways h2 {
             margin-top: 0;
-            margin-bottom: 1rem;
         }
-        .takeaways p {
-            font-size: 1rem;
-            line-height: 1.7;
+        .takeaways ul {
+            margin: 1rem 0 0 1.5rem;
             color: #444;
         }
         .footer {
+            padding: 2rem 3rem;
             text-align: center;
-            padding: 2rem;
             color: #888;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
             font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+            .main-content {
+                padding: 6rem 1rem 2rem 1rem;
+            }
+            .hero-imgs {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-menu {
+                gap: 1rem;
+            }
+            .nav-menu a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+                .nav-menu a.nav-current {
+            font-weight: 700;
+            color: #e76f38;
         }
         .cta-nav-btn {
             background: linear-gradient(135deg, #e76f38, #e76f38);
@@ -328,33 +403,49 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem 1.5rem;
-            }
-            .main-content {
-                padding: 6rem 1rem 2rem 1rem;
-            }
-            .problem-solution {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .meta-row {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .nav-menu {
-                gap: 1rem;
-            }
-            .nav-menu a {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-        }
-            .nav-menu a.nav-current {
-            font-weight: 700;
-            color: #e76f38;
-        }
+        /* Add hover effect and shadowbox modal styles */
+.main-img {
+    cursor: pointer;
+    transition: box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+}
+.main-img:hover {
+    box-shadow: 0 4px 24px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+}
+.shadowbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.2s;
+}
+.shadowbox-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    background: #fff;
+}
+.shadowbox-modal-close {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100001;
+    transition: color 0.2s;
+}
+.shadowbox-modal-close:hover {
+    color: #e76f38;
+}
     </style>
 </head>
 <body>
@@ -380,162 +471,209 @@
     </header>
 
     <main class="main-content">
-        <h1>ProjectName</h1>
-        
-        <!-- Project Meta Information -->
-        <div class="project-meta">
-            <div class="meta-overview">
-                <strong>Overview:</strong> Brief description of the project purpose and context - Month Year
-            </div>
-            <div class="meta-row">
-                <div class="meta-item">
-                    <span class="meta-label">Role:</span> UX Researcher, UX/UI designer
-                </div>
-            </div>
-            <div class="meta-row">
-                <div class="meta-item">
-                    <span class="meta-label">Toolkit:</span> Figma, Adobe CC, Pen and paper
-                </div>
-            </div>
+        <h1>Custom Clacks</h1>
+        <div class="section">
+            <div class="project-subtitle">UI/UX Case Study &amp; Design Project</div>
+            <div class="meta-info">Role: UX Researcher, UX/UI Designer</div>
+            <div class="meta-info">Tools: Adobe XD, Adobe CC, Pen and paper</div>
         </div>
+                    <div class="image-section">
+                <img src="images/Untitled-1.jpg" alt="screen shots of app" class="main-img">
+            </div>
+
+
 
         <!-- Overview Section -->
-        <div class="overview-section">
+        <div class="overview section">
             <h2>Overview</h2>
-            <p class="overview-text">
-                Detailed description of the project goals and what you aimed to create. Explain the main objective, the context of this project, and what problem you're solving for users.
-            </p>
-
-            <div class="problem-solution">
+            <p>To create an engaging, informative, and community-driven webpage for mechanical keyboard hobbyists, offering resources, guides, and a platform for enthusiasts to explore, customize, and discuss mechanical keyboards. </p>
+            <div class="problem-solution-section">
                 <div>
-                    <div class="problem-label">The Problem:</div>
-                    <p class="problem-text">
-                        A common problem that users face is [describe the specific challenge or pain point]. This creates difficulties in [explain the impact].
-                    </p>
+                    <h3>The Problem</h3>
+                    <p> A common problem in the keyboard community is the challenge of finding reliable information and trusted sources for high-quality parts and customization options.</p>
                 </div>
                 <div>
-                    <div class="solution-label">Solution:</div>
-                    <p class="solution-text">
-                        This project addresses [the problem] by providing [your solution]. It offers [specific benefits] and creates value through [key features or approach].
-                    </p>
+                    <h3>Solution</h3>
+                    <p>Lack of centralized resources for mechanical keyboard hobbyists, who often have to search multiple sites for guides, reviews, and community discussions. It also provides a platform for enthusiasts to share their builds, ask for advice, and find trusted parts in one place.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Target Audience Section -->
-        <div class="audience-section">
-            <h2>Target Audience</h2>
-            <div class="audience-item">
-                <div class="audience-label">Primary Audience:</div>
-                <p class="audience-text">
-                    Main target users for this project, including demographics, experience level, and specific needs they have.
-                </p>
-            </div>
-            <div class="audience-item">
-                <div class="audience-label">Secondary Audience:</div>
-                <p class="audience-text">
-                    Additional user groups that might benefit from this project and their unique characteristics.
-                </p>
-            </div>
-        </div>
-
-        <!-- Key Features Section -->
-        <div class="features-section">
+                    <!-- Key Features Section -->
+        <div class="section">
             <h2>Key Features</h2>
-            <div class="feature-item">
-                <div class="feature-title">Feature Name 1:</div>
-                <p class="feature-description">Detailed description of what this feature does and how it benefits users.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">Feature Name 2:</div>
-                <p class="feature-description">Detailed description of what this feature does and how it benefits users.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">Feature Name 3:</div>
-                <p class="feature-description">Detailed description of what this feature does and how it benefits users.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">Feature Name 4:</div>
-                <p class="feature-description">Detailed description of what this feature does and how it benefits users.</p>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">Feature Name 5:</div>
-                <p class="feature-description">Detailed description of what this feature does and how it benefits users.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-title">Build Guides & Tutorials</div>
+                    <div class="feature-overview">Step-by-step guides for building, customizing, and maintaining mechanical keyboards.</div>
+
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Community Forum</div>
+                    <div class="feature-overview">A space for hobbyists to share builds, discuss trends, and ask for advice.</div>
+
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Product Reviews & Recommendations</div>
+                    <div class="feature-overview">In-depth reviews of keyboards, switches, keycaps, and accessories.</div>
+
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">Switch & Keycap Database</div>
+                    <div class="feature-overview"> Comprehensive database for users to explore different mechanical switches and keycaps.</div>
+  
+
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">Marketplace</div>
+                    <div class="feature-overview"> A place for enthusiasts to buy, sell, or trade keyboards, switches, and other components.</div>
+
+                </div>
             </div>
         </div>
 
-        <!-- User Personas Section -->
-        <div class="simple-section">
+                <!-- Target Audience Section -->
+
+                    <h2>Understanding the User</h2>        
+        <div class="section">
+                        <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Primary Audience</div>
+                    <p>Mechanical keyboard hobbyists, from beginners to seasoned enthusiasts.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Secondary Audience</div>
+                    <p>Gamers, typists, and tech enthusiasts curious about mechanical keyboards.</p>
+                </div>
             <h2>User Personas</h2>
             <div class="image-section">
-                <img src="images/user-personas.jpg" alt="User Personas">
+                <img src="images/Screen+Shot+2018-05-17+at+1.42.49+PM.png" alt="User Research Table"class="main-img">
             </div>
-        </div>
-
-        <!-- Market Research Section -->
-        <div class="simple-section">
-            <h2>Market Research</h2>
-            <div class="image-section">
-                <img src="images/market-research.jpg" alt="Market Research">
+            
+                        <div class="image-section">
+                <img src="images/User+Flow.jpg" alt="User Research Table" class="main-img">
             </div>
-        </div>
 
-        <!-- Affinity Map and User Journey Section -->
-        <div class="simple-section">
-            <h2>Affinity Map and User Journey</h2>
-            <div class="image-section">
-                <img src="images/affinity-map.jpg" alt="Affinity Map and User Journey">
+        <!-- Information Architecture Section -->
+                    <h2>Market Research</h2>        
+                    <div class="image-section">
+                <img src="images/Screen+Shot+2018-05-17+at+2.12.43+PM.png" alt="User Research Table"class="main-img">
             </div>
-        </div>
+                        <div class="image-section">
+                <img src="images/Screen+Shot+2018-05-17+at+2.13.10+PM.png" alt="User Research Table"class="main-img">
+            </div>
 
-        <!-- Wireframes Section -->
+        <!-- Usability Test Section -->
         <div class="section">
-            <h2>Wireframes</h2>
-            <div class="design-principles">
-                <div class="principle-item">
-                    <div class="principle-title">Engagement:</div>
-                    <p class="principle-text">How you encourage user interaction and create dynamic, engaging experiences.</p>
-                </div>
-                <div class="principle-item">
-                    <div class="principle-title">Clarity:</div>
-                    <p class="principle-text">How you present complex information in a clear, accessible, and understandable manner.</p>
-                </div>
-                <div class="principle-item">
-                    <div class="principle-title">Customization:</div>
-                    <p class="principle-text">How you reflect user needs for personalization with customizable interface elements.</p>
-                </div>
+            <h3>Affinity Map and User Journey</h3>
+                    <div class="image-section">
+                <img src="images/Untitled-4.png" alt="User Research Table"class="main-img">
             </div>
-            <div class="image-section">
-                <img src="images/wireframes.jpg" alt="Wireframes">
+                        <div class="image-section">
+                <img src="images/Untitled-3.png" alt="User Research Table"class="main-img">
             </div>
-        </div>
+ 
 
         <!-- High Fidelity Section -->
-        <div class="simple-section">
-            <h2>High Fidelity</h2>
+        <div class="section">
+            <h3>Wireframes</h3>  
+        <div class="section">
+                        <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Engagement</div>
+                    <p>Encourage interaction through community features and dynamic content.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Clarity</div>
+                    <p>Present technical details and customization options in a clear, accessible manner.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Customization</div>
+                    <p>Reflect the hobby’s focus on personalization with a highly customizable interface.</p>
+                </div>
             <div class="image-section">
-                <img src="images/high-fidelity.jpg" alt="High Fidelity Mockups">
+                <img src="images/Untitled-1.png" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Untitled-2.1.png" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/The+Sceens+-+Mobile+Perspective+Mockup+3+-+by+Tranmautritam.jpg" alt="User Research Table" class="main-img">
+            </div>
+        </div>
+
+                <div class="section">
+            <h3>Wireframes</h3>  
+        <div class="section">
+                        <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Engagement</div>
+                    <p>Encourage interaction through community features and dynamic content.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Clarity</div>
+                    <p>Present technical details and customization options in a clear, accessible manner.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Customization</div>
+                    <p>Reflect the hobby’s focus on personalization with a highly customizable interface.</p>
+                </div>
+            <div class="image-section">
+                <img src="images/Untitled-1.png" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Untitled-2.1.png" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/The+Sceens+-+Mobile+Perspective+Mockup+3+-+by+Tranmautritam.jpg" alt="User Research Table" class="main-img">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>High Fidelity</h3>  
+        <div class="section">
+            <div class="image-section">
+                <img src="images/Untitled-2.jpg" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Account.png" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Team_Store.png" alt="User Research Table" class="main-img">
             </div>
         </div>
 
         <!-- Takeaways Section -->
         <div class="takeaways">
             <h2>Takeaways</h2>
-            <p>
-                Reflect on what you learned from this project. What insights did you gain about your target audience, the design process, or user behavior? How did user feedback influence your design decisions? What would you do differently next time, and how will these learnings inform your future work?
-            </p>
+            <ul>
+                <li>Researched and engaged with the mechanical keyboard community to understand their passion and expertise.</li>
+                <li>Designed a visually appealing platform with intuitive navigation and robust search functionality.</li>
+                <li>Incorporated user feedback to refine features and ensure alignment with community needs.</li>
+                <li>Prioritized accessibility to create an inclusive and user-friendly experience for all.</li>
+
+            </ul>
         </div>
 
-        <!-- Navigation Buttons -->
+        <!-- Navigation to Other Projects -->
         <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
-            <a href="creditmate.html" class="cta-nav-btn">Previous Project</a>
+            <a href="custom_clack.html" class="cta-nav-btn">Previous Project</a>
             <a href="crosscurrents.html" class="cta-nav-btn">Next Project</a>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" style="text-align:center;">
         <p>&copy; 2025 by Aaron Fiddelke</p>
     </footer>
+
+
+<div id="shadowboxModal" class="shadowbox-modal" style="display:none;">
+    <button class="shadowbox-modal-close" id="shadowboxCloseBtn" aria-label="Close">&times;</button>
+    <img id="shadowboxModalImg" src="" alt="Expanded Image">
+</div>
 
     <script>
         // Smooth scrolling and animations
@@ -560,7 +698,7 @@
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     const href = link.getAttribute('href');
-                    if (href && href.startsWith('#') ) {
+                    if (href && href.startsWith('#')) {
                         e.preventDefault();
                     }
                 });
@@ -628,5 +766,36 @@
             });
         }
     </script>
+    <script>
+    // Shadowbox modal logic
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('shadowboxModal');
+        var modalImg = document.getElementById('shadowboxModalImg');
+        var closeBtn = document.getElementById('shadowboxCloseBtn');
+        document.querySelectorAll('img.main-img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
+        });
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            modalImg.src = '';
+        });
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            }
+        });
+    });
+</script>
 </body>
 </html>

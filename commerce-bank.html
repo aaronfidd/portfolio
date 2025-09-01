@@ -6,13 +6,7 @@
     <title>Commerce Bank - Aaron Fiddelke</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f8f9fb;
-            color: #222;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #f8f9fb; color: #222; line-height: 1.6; overflow-x: hidden; }
         .header {
             position: fixed;
             top: 0;
@@ -22,10 +16,10 @@
             color: #222;
             padding: 1.5rem 3rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             z-index: 1000;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            justify-content: space-between;
         }
         .hover-underline {
             font-size: 1.3rem;
@@ -63,7 +57,7 @@
             gap: 2rem;
             list-style: none;
         }
-                .hamburger {
+        .hamburger {
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -123,100 +117,80 @@
                 text-align: left;
             }
         }
-        .nav-menu a {
-            color: #222;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-        }
-        .nav-menu a:hover {
-            color: #e76f38;
-            background: rgba(255, 130, 71, 0.08);
-        }
-        .main-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 7rem 1.5rem 2rem 1.5rem;
-        }
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #e76f38;
-        }
-        h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: .5rem;
-            margin-bottom: 1rem;
-            color: #222;
-        }
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-            color: #222;
-        }
-        .section {
-            margin-bottom: 2.5rem;
-        }
-        .hero-imgs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0 2.5rem 0;
-        }
-        .hero-imgs img {
-            width: 320px;
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .overview, .role, .projects {
-            margin-bottom: 2rem;
-        }
+        .nav-menu a { color: #222; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; padding: 0.5rem 1rem; border-radius: 8px; }
+        .nav-menu a:hover { color: #e76f38; background: rgba(255, 130, 71, 0.08); }
+        .main-content { max-width: 1100px; margin: 0 auto; padding: 7rem 1.5rem 2rem 1.5rem; }
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #e76f38; }
+        h2 { font-size: 1.3rem; font-weight: 600; margin-top: 0rem; margin-bottom: 1rem; color: #222; }
+        h3 { font-size: 1.1rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0.5rem; color: #222; }
+        .section { margin-bottom: 2.5rem; }
+        .hero-imgs { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0 2.5rem 0; }
+        .hero-imgs img { width: 320px; max-width: 100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .projects img {
             width: 100%;
-            max-width: 700px;
+            max-width: 850px;
+            height: auto;
             display: block;
             margin: 0 auto 1.5rem auto;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            transition: box-shadow 0.2s;
         }
-        .projects img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 24px rgba(255,130,71,0.12);
-        }
-        .takeaways {
-            background: #fff7f2;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 2px 8px rgba(255,130,71,0.06);
-        }
-        .takeaways h2 {
-            margin-top: 0;
-        }
-        .takeaways ul {
-            margin: 1rem 0 0 1.5rem;
-            color: #444;
-        }
-        @media (max-width: 700px) {
-            .main-content {
-                padding: 1.5rem 0.5rem;
-            }
-            .hero-imgs {
-                flex-direction: column;
-                gap: 1rem;
+        @media (max-width: 900px) {
+            .projects img {
+                max-width: 100%;
             }
         }
+        .projects img:hover { box-shadow: 0 4px 24px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10); }
+        .shadowbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.2s;
+        }
+        .shadowbox-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            background: #fff;
+            display: block;
+        }
+        .shadowbox-close {
+            position: absolute;
+            top: 2.5vw;
+            right: 2.5vw;
+            background: #fff;
+            color: #e76f38;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .shadowbox-close:hover {
+            background: #e76f38;
+            color: #fff;
+        }
+        .takeaways { background: #fff7f2; border-radius: 12px; padding: 2rem; margin-top: 2rem; box-shadow: 0 2px 8px rgba(255,130,71,0.06); }
+        .takeaways ul { margin: 1rem 0 0 1.5rem; color: #444; }
+        @media (max-width: 700px) { .main-content { padding: 1.5rem 0.5rem; } .hero-imgs { flex-direction: column; gap: 1rem; } }
                 .nav-menu a.nav-current {
             font-weight: 700;
             color: #e76f38;
@@ -242,60 +216,22 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
-        /* Shadowbox styles */
-    .shadowbox-overlay {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(34,34,34,0.85);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2000;
-        transition: opacity 0.3s;
-    }
-    .shadowbox-overlay.hidden {
-        opacity: 0;
-        pointer-events: none;
-    }
-    .shadowbox-img {
-        max-width: 90vw;
-        max-height: 80vh;
-        border-radius: 12px;
-        box-shadow: 0 4px 32px rgba(0,0,0,0.18);
-        background: #fff;
-    }
-    .shadowbox-close {
-        position: absolute;
-        top: 2.5vw;
-        right: 3vw;
-        background: #fff;
-        color: #e76f38;
-        border: none;
-        font-size: 2.2rem;
-        font-weight: bold;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-        cursor: pointer;
-        z-index: 2100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s;
-    }
-    .shadowbox-close:hover {
-        background: #ffe5d6;
-    }
+                .footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <a href="/" style="text-decoration:none;">
             <div class="hover-underline">Aaron Fiddelke</div>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <button class="hamburger" aria-label="Open navigation" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -305,52 +241,45 @@
                 <li><a href="uiux.html">UI/UX</a></li>
                 <li><a href="graphic-design.html" class="nav-current">Graphic Design</a></li>
                 <li><a href="illustration.html">Illustrations</a></li>
-                <li><a href="https://dribbble.com/aaronfidd" target="_blank" rel="noopener">Dribbble</a></li>
-                <li><a href="https://artishardstudio.com" target="_blank" rel="noopener">Store</a></li>
+                <li><a href="https://dribbble.com/aaronfidd" target="_blank">Dribbble</a></li>
+                <li><a href="https://artishardstudio.com" target="_blank">Store</a></li>
             </ul>
         </nav>
     </header>
     <main class="main-content">
         <h1>Commerce Bank</h1>
         <div class="section">
-            <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">Corporate Design & Marketing</div>
-            <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Senior Graphic Designer</div>
-            <div style="font-size:1rem;color:#888;">Tools: Adobe Creative Suite, Figma</div>
+            <div style="font-size:1.1rem;color:#444;margin-bottom:1.2rem;">Designing print and digital advertisements, brochures, flyers, and other promotional materials.</div>
+            <div style="font-size:1rem;color:#888;margin-bottom:0.5rem;">Role: Senior Graphic Designer:</div>
+            <div style="font-size:1rem;color:#888;">Adobe CC</div>
         </div>
         <div class="overview section">
             <h2>Overview</h2>
-            <p>Commerce Bank is a regional financial institution headquartered in Missouri, offering retail banking, commercial services, and wealth management. As part of the creative team, I focused on elevating brand presence across digital and print platforms, ensuring consistency and impact in visual storytelling.</p>
-        </div>
-        <div class="role section">
-            <h2>Responsibilities</h2>
-            <ul>
-                <li>Designing marketing materials across digital and print campaigns.</li>
-                <li>Developing and maintaining brand guidelines for consistent visual identity.</li>
-                <li>Creating user-centered UI/UX assets for online banking platforms.</li>
-                <li>Collaborating with cross-functional teams to align creative with strategy.</li>
-            </ul>
+            <p>Commerce Bank is a regional bank holding company based in Missouri, United States. It offers a variety of banking services, including checking and savings accounts, loans, mortgages, and investment products. Commerce Bank is known for its focus on customer service and community involvement.</p>
         </div>
         <div class="projects section">
-            <h2>Top Performing Digital Designs</h2>
-            <h3>Display Ads</h3>
-            <img src="images/cb-display.jpg" alt="Display Ads">
-            <h3>Social Media Campaigns</h3>
-            <img src="images/cb-social.jpg" alt="Social Media Campaigns">
-            <h3>UI/UX Designs</h3>
-            <img src="images/cb-uiux.jpg" alt="UI/UX Mockups">
-        </div>
-        <div class="projects section">
-            <h2>Print Media</h2>
-            <img src="images/cb-print-1.jpg" alt="Print Media 1">
-            <img src="images/cb-print-2.jpg" alt="Print Media 2">
-            <img src="images/cb-print-3.jpg" alt="Print Media 3">
+            <img src="images/CB+Logo.png" alt="Orbit Outfitters brand identity">
+            <h2>Display Ads</h2>
+            <img src="images/CB+Examples3.jpg" alt="Orbit Outfitters UI/UX mockups">
+           
+            <h2>Social Media Campaign</h2>
+            <img src="images/CB+Examples6.jpg" alt="Orbit Outfitters UI/UX mockups">
+            <h2>UI/UX Design</h2>
+            <img src="images/Copy+of+CB-Challenges-VeterneV2.png" alt="Orbit Outfitters UI/UX mockups">
+            <h2>UI/UX Design</h2>
+            <img src="images/Untitled-5.png" alt="Orbit Outfitters UI/UX mockups">
+            <img src="images/Untitled-6.png" alt="Orbit Outfitters UI/UX mockups">
+            <img src="images/CB+Examples5.jpg" alt="Orbit Outfitters UI/UX mockups">
         </div>
         <div class="takeaways">
             <h2>Takeaways</h2>
             <ul>
-                <li>Enhanced the bank’s visual identity through cohesive design systems.</li>
-                <li>Delivered high-performing campaigns that improved engagement metrics.</li>
-                <li>Strengthened customer trust with clear, accessible design across platforms.</li>
+                <li>Designed print and digital marketing materials, including advertisements, brochures, flyers, and promotional campaigns.</li>
+                <li>Developed and maintained comprehensive brand guidelines to ensure visual consistency across all platforms.</li>
+                <li>Created user-friendly and visually engaging interfaces for the bank’s website, mobile app, and digital services.</li>
+                <li>Partnered with marketing, branding, and product teams to align design strategies with business goals.</li>
+                <li>Researched and applied emerging design and banking trends to enhance creativity and relevance.</li>
+                <li>Strengthened brand recognition and customer engagement by effectively conveying Commerce Bank’s message through design.</li>
             </ul>
         </div>
         <div style="width:100%;display:flex;justify-content:center;gap:2rem;margin:3rem 0 2rem 0;">
@@ -358,56 +287,11 @@
             <a href="border-brewing.html" class="cta-nav-btn">Next Project</a>
         </div>
     </main>
-    <!-- Shadowbox Modal -->
-    <div class="shadowbox-overlay hidden" id="shadowboxOverlay">
-        <button class="shadowbox-close" id="shadowboxClose" aria-label="Close image">&times;</button>
-        <img src="" alt="Full Size" class="shadowbox-img" id="shadowboxImg">
-    </div>
-    <footer class="footer">
+    <footer class="footer" style="text-align:center;">
         <p>&copy; 2025 by Aaron Fiddelke</p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
-    <script>
-    // Following cursor dot effect
-    if (window.cursoreffects && typeof window.cursoreffects.followingDotCursor === 'function') {
-        new cursoreffects.followingDotCursor({ color: ["#323232a6"] });
-    } else {
-        // Fallback: simple dot
-        const dot = document.createElement('div');
-        dot.style.position = 'fixed';
-        dot.style.width = '13px';
-        dot.style.height = '13px';
-        dot.style.borderRadius = '50%';
-        dot.style.background = '#323232a6';
-        dot.style.pointerEvents = 'none';
-        dot.style.zIndex = '9999';
-        dot.style.transform = 'translate(-50%, -50%)';
-        document.body.appendChild(dot);
-        document.addEventListener('mousemove', function(e) {
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-        });
-    }
-</script>
 <script>
-        // Hamburger menu toggle
+        // Hamburger menu toggle and shadowbox for project images
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
@@ -423,6 +307,28 @@
                         hamburger.setAttribute('aria-expanded', false);
                     }
                 }
+            });
+
+            // Shadowbox for project images
+            document.querySelectorAll('.projects img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    const src = img.getAttribute('src');
+                    const alt = img.getAttribute('alt') || '';
+                    const overlay = document.createElement('div');
+                    overlay.className = 'shadowbox-overlay';
+                    overlay.innerHTML =
+                        '<button class="shadowbox-close" aria-label="Close">&times;</button>' +
+                        '<img class="shadowbox-img" src="' + src + '" alt="' + alt + '" />';
+                    overlay.querySelector('.shadowbox-close').addEventListener('click', function() {
+                        document.body.removeChild(overlay);
+                    });
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            document.body.removeChild(overlay);
+                        }
+                    });
+                    document.body.appendChild(overlay);
+                });
             });
         });
         // Following cursor dot effect
@@ -445,42 +351,6 @@
                 dot.style.top = e.clientY + 'px';
             });
         }
-    </script>
-    <script>
-    // Shadowbox modal for project images
-    document.addEventListener('DOMContentLoaded', function() {
-        const images = document.querySelectorAll('.projects img');
-        const overlay = document.getElementById('shadowboxOverlay');
-        const overlayImg = document.getElementById('shadowboxImg');
-        const closeBtn = document.getElementById('shadowboxClose');
-        images.forEach(img => {
-            img.addEventListener('click', function() {
-                overlay.classList.remove('hidden');
-                overlayImg.src = img.src;
-                overlayImg.alt = img.alt;
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        closeBtn.addEventListener('click', function() {
-            overlay.classList.add('hidden');
-            overlayImg.src = '';
-            document.body.style.overflow = '';
-        });
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) {
-                overlay.classList.add('hidden');
-                overlayImg.src = '';
-                document.body.style.overflow = '';
-            }
-        });
-        document.addEventListener('keydown', function(e) {
-            if (!overlay.classList.contains('hidden') && (e.key === 'Escape' || e.key === 'Esc')) {
-                overlay.classList.add('hidden');
-                overlayImg.src = '';
-                document.body.style.overflow = '';
-            }
-        });
-    });
     </script>
 </body>
 </html>

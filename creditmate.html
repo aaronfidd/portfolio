@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProjectName - Aaron Fiddelke</title>
+    <title>CreditMate - Aaron Fiddelke</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -157,7 +157,7 @@
         }
         h3 {
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 650;
             margin-top: 2rem;
             margin-bottom: 0.5rem;
             color: #222;
@@ -211,7 +211,7 @@
         }
         .audience-title {
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 650;
             color: #222;
             margin-bottom: 0.5rem;
         }
@@ -351,10 +351,12 @@
             margin: 1rem 0 0 1.5rem;
             color: #444;
         }
-        .footer {
+         .footer {
+            padding: 2rem 3rem;
             text-align: center;
-            padding: 2rem;
             color: #888;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
             font-size: 0.9rem;
         }
         @media (max-width: 700px) {
@@ -401,6 +403,49 @@
             transform: scale(1.1);
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
         }
+        /* Add hover effect and shadowbox modal styles */
+.main-img {
+    cursor: pointer;
+    transition: box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+}
+.main-img:hover {
+    box-shadow: 0 4px 24px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+}
+.shadowbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.2s;
+}
+.shadowbox-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    background: #fff;
+}
+.shadowbox-modal-close {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100001;
+    transition: color 0.2s;
+}
+.shadowbox-modal-close:hover {
+    color: #e76f38;
+}
     </style>
 </head>
 <body>
@@ -426,104 +471,68 @@
     </header>
 
     <main class="main-content">
-        <h1>ProjectName App</h1>
+        <h1>CreditMate</h1>
         <div class="section">
             <div class="project-subtitle">UI/UX Case Study &amp; Design Project</div>
             <div class="meta-info">Role: UX Researcher, UX/UI Designer</div>
             <div class="meta-info">Tools: Figma, Adobe CC, FigJam, Pen and paper</div>
         </div>
+                    <div class="image-section">
+                <img src="images/Phone+Screen+Mockup+(1).jpg" alt="screen shots of app" class="main-img">
+            </div>
 
-        <!-- Hero Images Section -->
-        <div class="hero-imgs">
-            <img src="images/project-hero-1.jpg" alt="ProjectName Mockup 1">
-            <img src="images/project-hero-2.jpg" alt="ProjectName Mockup 2">
-            <img src="images/project-hero-3.jpg" alt="ProjectName Mockup 3">
-        </div>
+
 
         <!-- Overview Section -->
         <div class="overview section">
             <h2>Overview</h2>
-            <p>Brief description of your project. Explain the main objective, context, and what you aimed to create. This should give readers a clear understanding of the project's purpose and scope.</p>
+            <p>Google Certification Project - June 2024. First project in the Google Certification program to learn and advance current knowledge of Figma for phone applications.</p>
             
             <div class="problem-solution-section">
                 <div>
                     <h3>The Problem</h3>
-                    <p>Describe the main problem or pain point that users are experiencing. What challenges does this project address? What gaps exist in the current market or user experience?</p>
+                    <p>Users often have to manage financial data from multiple sources — credit score apps, calculators, financial articles — leading to confusion and inefficiency.</p>
                 </div>
                 <div>
                     <h3>Solution</h3>
-                    <p>Explain how your project solves the identified problem. What value does it provide to users? How does your approach differ from existing solutions?</p>
+                    <p>CreditMate helps users better manage their finances, improve their credit health, and become more financially empowered.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Target Audience Section -->
-        <div class="section">
-            <h2>Understanding the User</h2>
-            
-            <!-- Add user research table image here -->
-            <div class="image-section">
-                <img src="images/user-research-table.jpg" alt="User Research Table">
-            </div>
-            
-            <div class="audience-section">
-                <div class="audience-item">
-                    <div class="audience-title">Primary Audience</div>
-                    <p>Describe the main target users for this project. Include demographics, behaviors, needs, and pain points. What motivates them and what are their goals?</p>
-                </div>
-                <div class="audience-item">
-                    <div class="audience-title">Secondary Audience</div>
-                    <p>Identify any secondary user groups that might benefit from this project. How do their needs differ from the primary audience?</p>
-                </div>
-            </div>
-
-            <!-- Add persona image here -->
-            <div class="image-section">
-                <img src="images/user-persona.jpg" alt="User Persona">
-            </div>
-        </div>
-
-        <!-- Information Architecture Section -->
-        <div class="section">
-            <h2>Information Architecture</h2>
-            <div class="image-section">
-                <img src="images/information-architecture.jpg" alt="Information Architecture Diagram">
-            </div>
-        </div>
-
-        <!-- Key Features Section -->
+                    <!-- Key Features Section -->
         <div class="section">
             <h2>Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-title">Feature One</div>
-                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <div class="feature-title">Credit Score Dashboard</div>
+                    <div class="feature-overview">Overview: Displays a real-time credit score and credit history.</div>
                     <ul class="feature-list">
-                        <li>Key functionality or benefit</li>
-                        <li>Another important aspect</li>
-                        <li>How it helps users achieve their goals</li>
-                        <li>Integration with other features</li>
+                        <li>Easy-to-read credit score visualization.</li>
+                        <li>Breakdown of factors affecting the credit score (e.g., payment history, debt levels, credit length).</li>
+                        <li>Credit score trends over time with improvement tips.</li>
+                       
                     </ul>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-title">Feature Two</div>
-                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <div class="feature-title">Financial Calculators</div>
+                    <div class="feature-overview">Overview: Offers a variety of calculators for making informed financial decisions.</div>
                     <ul class="feature-list">
-                        <li>Key functionality or benefit</li>
-                        <li>User interaction details</li>
-                        <li>Problem it solves</li>
-                        <li>Value proposition</li>
+                        <li>Loan affordability and mortgage calculator.</li>
+                        <li>Credit card interest calculator.</li>
+                        <li>Savings and investment growth calculator (e.g., compound interest, retirement).</li>
+                        
                     </ul>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-title">Feature Three</div>
-                    <div class="feature-overview">Overview: Brief description of what this feature does and its main purpose.</div>
+                    <div class="feature-title">Personalized Financial Articles</div>
+                    <div class="feature-overview">Overview: Provides curated, easy-to-understand articles and guides on various financial topics.</div>
                     <ul class="feature-list">
-                        <li>Key functionality or benefit</li>
-                        <li>Technical considerations</li>
-                        <li>User experience enhancement</li>
+                        <li>KArticles on improving credit score, managing debt, building savings, and investing.</li>
+                        <li>Categorized content tailored to the users financial profile.</li>
+                        <li>Push notifications for new articles and tips based on user behavior.</li>
                         <li>Accessibility features</li>
                     </ul>
                 </div>
@@ -541,89 +550,102 @@
             </div>
         </div>
 
-        <!-- User Journey Section -->
+                <!-- Target Audience Section -->
+
+                    <h2>Understanding the User</h2>        
         <div class="section">
-            <h2>User Journey</h2>
-            <p>Overview of the user flow and key touchpoints throughout the experience.</p>
-            
-            <div class="user-journey-section">
-                <div class="journey-step">
-                    <div class="journey-step-title">Onboarding:</div>
-                    <p>Describe the initial user experience when they first encounter your product. What steps do they take to get started? How do you introduce key features?</p>
+                        <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Primary Audience</div>
+                <p>Individuals seeking to improve financial literacy, track their credit score, and manage personal finances effectively.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Secondary Audience</div>
+                    <p>Young adults, new credit card holders, or anyone seeking financial guidance.</p>
                 </div>
 
-                <div class="journey-step">
-                    <div class="journey-step-title">Main Dashboard:</div>
-                    <p>Explain what users see and can do on the main interface. What's the primary focus and what actions are available? How does the interface adapt to user needs?</p>
-                </div>
-
-                <div class="journey-step">
-                    <div class="journey-step-title">Feature Access:</div>
-                    <p>Detail how users navigate to and interact with the main features of your product. What's the flow between different sections?</p>
-                </div>
+            <div class="image-section">
+                <img src="images/userjourney.jpg" alt="User Research Table"class="main-img">
             </div>
-        </div>
+            
+                        <div class="image-section">
+                <img src="images/User+Flow.jpg" alt="User Research Table" class="main-img">
+            </div>
 
-        <!-- Wireframes Section -->
+        <!-- Information Architecture Section -->
+                    <h2>Wireframes</h2>        
         <div class="section">
-            <h2>Wireframes</h2>
-            <p>Initial wireframes were created to plan the structure and key user journeys. The wireframes set the foundation for a streamlined experience and clear information hierarchy.</p>
-        </div>
+                        <div class="audience-section">
+                <div class="audience-item">
+                    <div class="audience-title">Simplicity</div>
+                    <p>The app should present complex financial data in an easy-to-understand format. Clean, minimal UI with intuitive navigation.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Transparency</div>
+                    <p>Clearly communicate financial health and impacts of actions without confusing jargon.</p>
+                </div>
+                <div class="audience-item">
+                    <div class="audience-title">Transparency</div>
+                    <p>Tailor content, calculators, and recommendations to the user’s specific financial profile.</p>
+                </div>
+            <div class="image-section">
+                <img src="images/wireframe.jpg" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/digital+wireframe.jpg" alt="User Research Table" class="main-img">
+            </div>
 
         <!-- Usability Test Section -->
         <div class="section">
-            <h2>Usability Test</h2>
-            <p>Usability testing was conducted with real users to validate workflows, identify issues, and gather feedback on navigation and functionality. The results guided further improvements to the design.</p>
+            <h3>Usability Test</h3>
+            <p>In this usability test for CreditMate, participants were asked to complete tasks such as checking their credit score, using the loan calculator, and reading a personalized financial article. We observed how easily users navigated these features and identified any pain points or areas of confusion. Feedback on ease of use, clarity of information, and overall experience was collected through a post-test survey</p>
             
             <div class="usability-findings">
                 <div>
-                    <div class="findings-title">User Interview Takeaways</div>
+                    <div class="findings-title">Positive Findings</div>
                     <ul class="findings-list">
-                        <li>What users liked about the design</li>
-                        <li>Features that worked well</li>
-                        <li>Areas where users excelled</li>
-                        <li>Positive feedback on usability</li>
+                        <li>Ease of Navigation: Most users found the app’s layout intuitive and appreciated the clean, organized design of the dashboard.</li>
+                        <li>Clear Credit Score Display: Users liked the real-time credit score feature, finding it easy to access and understand, with useful breakdowns of factors affecting their score.</li>
+                        <li>Helpful Calculators: The financial calculators, especially the loan and debt consolidation tools, were praised for being simple to use and providing clear, actionable results.</li>
                     </ul>
                 </div>
                 <div>
-                    <div class="findings-title">Direct System Observations</div>
+                    <div class="findings-title">Negative Findings</div>
                     <ul class="findings-list">
-                        <li>Areas of confusion for users</li>
-                        <li>Features that need improvement</li>
-                        <li>Navigation challenges identified</li>
-                        <li>Suggestions for enhancement</li>
+                        <li>Confusion in Financial Articles Section: Some users felt that the articles were not well categorized, making it difficult to find specific topics.</li>
+                        <li>Lack of Real-Time Notifications: Users suggested that the app could benefit from more proactive notifications for credit score changes and upcoming bill reminders.</li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <!-- Digital Wireframes Section -->
-        <div class="section">
-            <h2>Wireframe - Digital</h2>
-            <p>Digital wireframes refined layout, visual hierarchy, and content. These helped align team and stakeholder vision prior to final mockups and development.</p>
         </div>
 
         <!-- High Fidelity Section -->
         <div class="section">
-            <h2>High Fidelity</h2>
-            <p>High-fidelity mockups showcased the final design, ready for development and implementation. These designs incorporated all feedback and testing insights.</p>
+            <h3>High Fidelity</h3>
+            <div class="image-section">
+                <img src="images/Phone+Screen+Mockup+(1).jpg" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Phone+Screen+Mockup+(3).jpg" alt="User Research Table" class="main-img">
+            </div>
+            <div class="image-section">
+                <img src="images/Untitled-2.png" alt="User Research Table" class="main-img">
+            </div>
         </div>
 
         <!-- CTA Buttons -->
         <div class="cta-btns">
-            <a href="#" class="cta-btn">View Wireframes</a>
-            <a href="#" class="cta-btn">View Prototype</a>
+            <a href="https://www.figma.com/proto/voPlK1WNkkUduAuK3KexIY/Credit-Made---Wireframe-V1?page-id=28%3A150&node-id=28-594&node-type=FRAME&viewport=1341%2C402%2C0.25&t=SdGABi7sJaEbLM3n-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=28%3A594" class="cta-btn" target="_blank" rel="noopener">View Prototype</a>
         </div>
 
         <!-- Takeaways Section -->
         <div class="takeaways">
             <h2>Takeaways</h2>
             <ul>
-                <li>Key insight or learning from the design process</li>
-                <li>How user research and testing influenced the final design</li>
-                <li>Technical or design challenges overcome</li>
-                <li>Impact on user experience and business goals</li>
-                <li>Future improvements or iterations planned</li>
+                <li>Reinforced the importance of design consistency and the value of wireframing and prototyping in Figma.</li>
+                <li>Applied an iterative design process where feedback refined user flows and improved overall usability.</li>
+                <li>Leveraged Figma’s collaboration tools to facilitate seamless teamwork and communication.</li>
+                <li>Gained hands-on experience balancing usability, consistency, and collaboration in the design process.</li>
             </ul>
         </div>
 
@@ -632,7 +654,16 @@
             <a href="crosscurrents.html" class="cta-nav-btn">Previous Project</a>
             <a href="custom_clack.html" class="cta-nav-btn">Next Project</a>
         </div>
+        
     </main>
+
+
+
+
+<div id="shadowboxModal" class="shadowbox-modal" style="display:none;">
+    <button class="shadowbox-modal-close" id="shadowboxCloseBtn" aria-label="Close">&times;</button>
+    <img id="shadowboxModalImg" src="" alt="Expanded Image">
+</div>
 
     <footer class="footer">
         <p>&copy; 2025 by Aaron Fiddelke</p>
@@ -729,5 +760,36 @@
             });
         }
     </script>
+    <script>
+    // Shadowbox modal logic
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById('shadowboxModal');
+        var modalImg = document.getElementById('shadowboxModalImg');
+        var closeBtn = document.getElementById('shadowboxCloseBtn');
+        document.querySelectorAll('img.main-img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
+        });
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            modalImg.src = '';
+        });
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            }
+        });
+    });
+</script>
 </body>
 </html>

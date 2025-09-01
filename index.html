@@ -133,7 +133,7 @@
                 z-index: 1099;
             }
             .nav-menu.open {
-                display: flex;
+                display: flex !important;
             }
             .nav-menu li {
                 width: 100%;
@@ -241,23 +241,39 @@
             .hero {
                 padding: 0 1rem;
                 min-height: 60vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
             .hero-content {
                 grid-template-columns: 1fr;
                 width: 100%;
                 gap: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
             }
             .greeting {
-                font-size: 1.3rem;
-                margin-bottom: 0.3rem;
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
             }
             .hero-title {
-                font-size: 2.2rem;
-                margin-bottom: 1rem;
+                font-size: 3.2rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+            .hero-image {
+                display: flex;
+                justify-content: center;
             }
             .hero-image img {
-                width: 250px;
-                height: 250px;
+                width: 350px;
+                height: 350px;
+                margin: 0 auto;
             }
         }
 
@@ -600,18 +616,40 @@
         }
 
         .cta-final {
+            align-self: flex-start;
             background: linear-gradient(135deg, #e76f38, #e76f38);
-            color: white;
-            padding: 1.5rem 4rem;
+            color: #fff;
+            padding: 1.7rem 5rem;
             border: none;
-            border-radius: 60px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50px;
             font-weight: 700;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            text-decoration: none;
         }
 
         .cta-final:hover {
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
+            transform: scale(2);
+        }
+
+        .project-cta {
+            align-self: flex-start;
+            background: linear-gradient(135deg, #e76f38, #e76f38);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s;
+            text-decoration: none;
+        }
+        .project-cta:hover {
             background: linear-gradient(135deg, #e76f38, #e76f38);
             color: #fff;
             box-shadow: 0 0 16px 2px rgba(255,130,71,0.18), 0 2px 16px rgba(255,130,71,0.10);
@@ -856,6 +894,7 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Skills Section -->
     <section class="skills-section scroll-reveal">
@@ -868,7 +907,7 @@
                 <div class="skill-card-content">
                     <h4>UI/UX Designs</h4>
                     <p>A deep dive into the world of digital experiences, where user stories translate into flows and wireframes. Every project explores user-centric solutions crafted to not only look visually appealing but serve people around the world.</p>
-                    <button class="skill-button">View Case Studies</button>
+                    <a href="uiux.html" class="project-cta">View Case Studies</a>
                 </div>
             </div>
             <div class="skill-card">
@@ -878,7 +917,7 @@
                 <div class="skill-card-content">
                     <h4>Graphic Designs</h4>
                     <p>A curated collection of visual identities that range from playful and creative projects in collateral design, branding, print design, and developing out branding systems that tell stories, build trust, and bring ideas to life through thoughtful, creative.</p>
-                    <button class="skill-button">View Designs</button>
+                    <a href="graphic-design.html" class="project-cta">View Designs</a>
                 </div>
             </div>
             <div class="skill-card">
@@ -888,7 +927,7 @@
                 <div class="skill-card-content">
                     <h4>Illustrations</h4>
                     <p>A showcase of artistic storytelling where each illustration captures imagination and emotion. In this collection, creativity, color, and line work shown to bring art of life personal projects. They bring energy to motion ideas.</p>
-                    <button class="skill-button">View Illustrations</button>
+                    <a href="illustration.html" class="project-cta">View Illustrations</a>
                 </div>
             </div>
         </div>
@@ -900,7 +939,7 @@
     <section class="cta-section scroll-reveal">
         <h2 class="cta-title">Lets build your</h2>
         <h3 class="cta-subtitle">project together</h3>
-        <button class="cta-final">Get in touch</button>
+        <a href="mailto:aaronfidd@gmail.com" class="cta-final">Get in Touch</a>
     </section>
 
     <!-- Footer -->
@@ -912,6 +951,7 @@
         // Smooth scrolling and animations
         document.addEventListener('DOMContentLoaded', function() {
             // Hamburger menu toggle
+                    document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             hamburger.addEventListener('click', function() {
@@ -919,6 +959,15 @@
                 hamburger.setAttribute('aria-expanded', !expanded);
                 navMenu.classList.toggle('open');
             });
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                        navMenu.classList.remove('open');
+                        hamburger.setAttribute('aria-expanded', false);
+                    }
+                }
+            });
+        });
 
             // Close nav when clicking outside (mobile only)
             document.addEventListener('click', function(e) {
